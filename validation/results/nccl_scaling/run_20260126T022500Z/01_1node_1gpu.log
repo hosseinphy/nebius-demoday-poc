@@ -1,0 +1,6 @@
+===== SBATCH STDOUT (01_1node_1gpu) =====
+hostlist: worker0
+time_utc: 2026-01-26T02:25:10Z
+srun: error: Unable to create step for job 73: Invalid generic resource (gres) specification
+
+===== SUMMARY LINE (parsed last row) =====

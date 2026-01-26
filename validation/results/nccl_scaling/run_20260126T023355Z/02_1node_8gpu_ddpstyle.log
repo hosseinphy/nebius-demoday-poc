@@ -1,0 +1,15 @@
+===== SBATCH STDOUT (02_1node_8gpu_ddpstyle) =====
+hostlist: worker0
+time_utc: 2026-01-26T02:34:36Z
+SLURM_JOB_CPUS_PER_NODE=32
+SLURM_NTASKS=8
+SLURM_CPUS_PER_TASK=4
+SLURM_GPUS_ON_NODE=8
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+srun: error: Couldn't find the specified plugin name for mpi/pmix_v3 looking at all files
+srun: error: cannot find mpi plugin for mpi/pmix_v3
+srun: error: MPI: Cannot create context for mpi/pmix_v3
+srun: error: MPI: Unable to load any plugin
+srun: error: Invalid MPI type 'pmix_v3', --mpi=list for acceptable types
+
+===== SUMMARY LINE (parsed last row) =====

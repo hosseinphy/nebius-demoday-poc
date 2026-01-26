@@ -1,0 +1,6 @@
+===== SBATCH STDOUT (02_1node_8gpu_ddpstyle) =====
+hostlist: worker0
+time_utc: 2026-01-26T02:25:40Z
+srun: error: Unable to create step for job 74: Invalid generic resource (gres) specification
+
+===== SUMMARY LINE (parsed last row) =====

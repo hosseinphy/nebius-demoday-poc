@@ -1,0 +1,6 @@
+===== SBATCH STDOUT (02_1node_8gpu_ddpstyle) =====
+hostlist: worker0
+time_utc: 2026-01-26T02:27:50Z
+srun: error: Unable to create step for job 76: More processors requested than permitted
+
+===== SUMMARY LINE (parsed last row) =====

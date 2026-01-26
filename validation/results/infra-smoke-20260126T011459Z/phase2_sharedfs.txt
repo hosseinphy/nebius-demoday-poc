@@ -1,0 +1,19 @@
+=== Phase 2: Shared filesystem (/mnt/sharedfs) ===
+TARGET        SOURCE   FSTYPE   OPTIONS
+/mnt/sharedfs sharedfs virtiofs rw,relatime
+Filesystem      Size  Used Avail Use% Mounted on
+sharedfs        2.0T   61G  2.0T   3% /mnt/sharedfs
+
+
+Files created on shared FS:
+-rw-rw-r-- 1 ubuntu ubuntu 51 Jan 26 01:15 /mnt/sharedfs/nebius-demoday-test/validation/results/infra-smoke-20260126T011459Z/fs_test.$(hostname).txt
+-rw-rw-r-- 1 ubuntu ubuntu 58 Jan 26 01:15 /mnt/sharedfs/nebius-demoday-test/validation/results/infra-smoke-20260126T011459Z/fs_test.worker0.rank0.txt
+-rw-rw-r-- 1 ubuntu ubuntu 58 Jan 26 01:15 /mnt/sharedfs/nebius-demoday-test/validation/results/infra-smoke-20260126T011459Z/fs_test.worker1.rank1.txt
+
+Contents:
+--- /mnt/sharedfs/nebius-demoday-test/validation/results/infra-smoke-20260126T011459Z/fs_test.$(hostname).txt
+shared-test-1 from worker0 at 2026-01-26T01:15:10Z
+--- /mnt/sharedfs/nebius-demoday-test/validation/results/infra-smoke-20260126T011459Z/fs_test.worker0.rank0.txt
+shared-test-2 from worker0 rank=0 at 2026-01-26T01:15:40Z
+--- /mnt/sharedfs/nebius-demoday-test/validation/results/infra-smoke-20260126T011459Z/fs_test.worker1.rank1.txt
+shared-test-2 from worker1 rank=1 at 2026-01-26T01:15:40Z

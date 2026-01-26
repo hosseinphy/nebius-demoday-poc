@@ -1,0 +1,9 @@
+=== Phase 2: Shared filesystem (/mnt/sharedfs) ===
+TARGET        SOURCE   FSTYPE   OPTIONS
+/mnt/sharedfs sharedfs virtiofs rw,relatime
+Filesystem      Size  Used Avail Use% Mounted on
+sharedfs        2.0T   61G  2.0T   3% /mnt/sharedfs
+
+srun: warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+srun: error: Unable to confirm allocation for job 41: Invalid job id specified
+srun: Check SLURM_JOB_ID environment variable. Expired or invalid job 41

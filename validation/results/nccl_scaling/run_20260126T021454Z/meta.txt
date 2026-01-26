@@ -1,0 +1,9 @@
+run_id=20260126T021454Z
+date_utc=2026-01-26T02:14:54Z
+partition=gpu
+gpus_per_node=8
+workdir=/mnt/sharedfs/tools/nccl-tests
+bin=./build/all_reduce_perf
+args=-b 32M -e 1G -f 2 -g 1 -w 3 -n 20
+pin_nodes=none
+git_sha=8aaf57f8b83671a61f60f5b94cde28d05ac07e45

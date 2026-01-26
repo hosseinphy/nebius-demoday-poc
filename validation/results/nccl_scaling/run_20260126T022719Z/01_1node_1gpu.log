@@ -1,0 +1,30 @@
+===== SBATCH STDOUT (01_1node_1gpu) =====
+hostlist: worker0
+time_utc: 2026-01-26T02:27:20Z
+# nccl-tests version 2.17.8 nccl-headers=22602 nccl-library=22602
+# Collective test starting: all_reduce_perf
+# nThread 1 nGpus 1 minBytes 33554432 maxBytes 1073741824 step: 2(factor) warmup iters: 3 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 354679 on    worker0 device  0 [0000:8d:00] NVIDIA H100 80GB HBM3
+NCCL version 2.26.2+cuda12.8
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw  #wrong     time   algbw   busbw  #wrong 
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)             (us)  (GB/s)  (GB/s)         
+    33554432       8388608     float     sum      -1    25.66  1307.6    0.00       0     0.08  406228    0.00       0
+    67108864      16777216     float     sum      -1    48.25  1390.9    0.00       0     0.08  829016    0.00       0
+   134217728      33554432     float     sum      -1    91.90  1460.5    0.00       0     0.08   2e+06    0.00       0
+   268435456      67108864     float     sum      -1   179.65  1494.2    0.00       0     0.08   3e+06    0.00       0
+   536870912     134217728     float     sum      -1   357.25  1502.8    0.00       0     0.08   7e+06    0.00       0
+  1073741824     268435456     float     sum      -1   707.94  1516.7    0.00       0     0.08   1e+07    0.00       0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 0 
+#
+# Collective test concluded: all_reduce_perf
+#
+
+
+===== SUMMARY LINE (parsed last row) =====
+1073741824  oop_time(us)=707.94  oop_algbw(GB/s)=1516.7  oop_busbw(GB/s)=0.00  ip_time(us)=1e+07  ip_algbw(GB/s)=0.00  ip_busbw(GB/s)=0

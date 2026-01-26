@@ -1,0 +1,4 @@
+===== SBATCH STDOUT (01_1node_1gpu) =====
+/var/spool/slurmd/job00069/slurm_script: 4: set: Illegal option -o pipefail
+
+===== SUMMARY LINE (parsed last row) =====

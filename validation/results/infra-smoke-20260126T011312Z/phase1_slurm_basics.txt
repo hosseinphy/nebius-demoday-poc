@@ -1,0 +1,23 @@
+=== Phase 1: Slurm basics ===
+Slurmctld(primary) at login0 is UP
+
+Mon Jan 26 01:13:12 2026
+NODELIST   NODES PARTITION       STATE CPUS    S:C:T MEMORY TMP_DISK WEIGHT AVAIL_FE REASON              
+worker0        1      gpu*        idle 128    2:32:2 161263        0      1   (null) none                
+worker1        1      gpu*        idle 128    2:32:2 161263        0      1   (null) none                
+
+REASON               USER      TIMESTAMP           NODELIST
+
+PartitionName=gpu
+   AllowGroups=ALL AllowAccounts=ALL AllowQos=ALL
+   AllocNodes=ALL Default=YES QoS=N/A
+   DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO GraceTime=0 Hidden=NO
+   MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
+   Nodes=worker[0-1]
+   PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO
+   OverTimeLimit=NONE PreemptMode=OFF
+   State=UP TotalCPUs=256 TotalNodes=2 SelectTypeParameters=NONE
+   JobDefaults=(null)
+   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
+   TRES=cpu=256,mem=3225278M,node=2,billing=256
+

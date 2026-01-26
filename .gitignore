@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+venv/
+
+# HuggingFace / Torch caches
+.cache/
+hf_cache/
+torch_cache/
+
+# Slurm & logs
+slurm-logs/
+*.out
+*.err
+
+# Checkpoints / weights
+**/checkpoints/
+**/runs/
+**/adapters/
+
+# OS
+.DS_Store

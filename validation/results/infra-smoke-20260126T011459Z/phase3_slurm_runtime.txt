@@ -1,0 +1,10 @@
+=== Phase 3: Slurm runtime ===
+worker0
+
+rank=0 host=worker0
+rank=1 host=worker0
+
+rank=0 host=worker0
+rank=1 host=worker1
+
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
