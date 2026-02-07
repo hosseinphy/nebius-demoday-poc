@@ -1,0 +1,13 @@
+run_id=20260201T232917Z
+date_utc=2026-02-01T23:29:17Z
+user=ubuntu
+partition=gpu
+nodes=1
+ntasks_total=8
+gpus_per_node=8
+cpus_per_task=8
+nccl_bin=/mnt/sharedfs/tools/nccl-tests/build/all_reduce_perf
+nccl_args=-b 8 -e 1G -f 2 -g 1
+interval_sec=1
+slurm_jobid=88
+git_sha=eae84d7c417a7f4bf1ac465499647f40184dd796
