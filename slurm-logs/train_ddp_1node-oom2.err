@@ -1,0 +1,427 @@
++ mkdir -p /mnt/sharedfs/nebius-demoday-test/slurm-logs
++ source training/env.sh
+++ VENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ '[' -d /mnt/sharedfs/nebius-demoday-test/.venv ']'
+++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
++++ deactivate nondestructive
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ hash -r
++++ '[' -n '' ']'
++++ unset VIRTUAL_ENV
++++ unset VIRTUAL_ENV_PROMPT
++++ '[' '!' nondestructive = nondestructive ']'
++++ '[' linux-gnu = cygwin ']'
++++ '[' linux-gnu = msys ']'
++++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ _OLD_VIRTUAL_PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ export PATH
++++ '[' -n '' ']'
++++ '[' -z '' ']'
++++ _OLD_VIRTUAL_PS1=
++++ PS1='(.venv) '
++++ export PS1
++++ VIRTUAL_ENV_PROMPT='(.venv) '
++++ export VIRTUAL_ENV_PROMPT
++++ hash -r
+++ set -euo pipefail
+++ REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+++ export RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ export HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ mkdir -p /mnt/sharedfs/nebius-demoday-test/results/training /mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ echo REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+++ echo RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ echo HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
+++ deactivate nondestructive
+++ '[' -n /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin ']'
+++ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ unset _OLD_VIRTUAL_PATH
+++ '[' -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ '[' linux-gnu = cygwin ']'
+++ '[' linux-gnu = msys ']'
+++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ _OLD_VIRTUAL_PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1='(.venv) '
+++ PS1='(.venv) (.venv) '
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(.venv) '
+++ export VIRTUAL_ENV_PROMPT
+++ hash -r
++ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ export NCCL_DEBUG=INFO
++ NCCL_DEBUG=INFO
++ export TORCH_DISTRIBUTED_DEBUG=DETAIL
++ TORCH_DISTRIBUTED_DEBUG=DETAIL
++ export 'NCCL_SOCKET_IFNAME=^lo,docker0'
++ NCCL_SOCKET_IFNAME='^lo,docker0'
+++ hostname
++ echo HOST=worker0
++ echo CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
++ nvidia-smi -L
++ torchrun --nproc_per_node=8 training/src/train_sft_ddp_min.py --run_name sft_ddp_1node_smoke --max_steps 10 --seq_len 512 --bsz 1 --grad_accum 1
+W0125 01:25:40.462000 163842 torch/distributed/run.py:793] 
+W0125 01:25:40.462000 163842 torch/distributed/run.py:793] *****************************************
+W0125 01:25:40.462000 163842 torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0125 01:25:40.462000 163842 torch/distributed/run.py:793] *****************************************
+[W125 01:26:02.249908663 CUDAAllocatorConfig.h:28] Warning: expandable_segments not supported on this platform (function operator())
+[W125 01:26:02.306870925 CUDAAllocatorConfig.h:28] Warning: expandable_segments not supported on this platform (function operator())
+[W125 01:26:02.363717738 CUDAAllocatorConfig.h:28] Warning: expandable_segments not supported on this platform (function operator())
+[W125 01:26:02.391793714 CUDAAllocatorConfig.h:28] Warning: expandable_segments not supported on this platform (function operator())
+[W125 01:26:02.420728902 CUDAAllocatorConfig.h:28] Warning: expandable_segments not supported on this platform (function operator())
+[W125 01:26:02.445284730 CUDAAllocatorConfig.h:28] Warning: expandable_segments not supported on this platform (function operator())
+[W125 01:26:02.468179274 CUDAAllocatorConfig.h:28] Warning: expandable_segments not supported on this platform (function operator())
+[W125 01:26:02.485497282 CUDAAllocatorConfig.h:28] Warning: expandable_segments not supported on this platform (function operator())
+[rank2]:[W125 01:26:04.060531356 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 2]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank0]:[W125 01:26:04.060570004 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank7]:[W125 01:26:04.060591604 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 7]  using GPU 7 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank5]:[W125 01:26:04.060587677 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 5]  using GPU 5 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank1]:[W125 01:26:04.060596375 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank6]:[W125 01:26:04.060599485 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 6]  using GPU 6 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank3]:[W125 01:26:04.060639282 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 3]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank4]:[W125 01:26:04.060820209 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 4]  using GPU 4 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 55.38it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 58.85it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 47.04it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 43.24it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  4.23it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  4.41it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  4.20it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  4.39it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.07it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  2.11it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.64s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.33s/it]
+Map:   0%|          | 0/2048 [00:00<?, ? examples/s]Map:   0%|          | 0/2048 [00:00<?, ? examples/s]Map:   0%|          | 0/2048 [00:00<?, ? examples/s]Map:   0%|          | 0/2048 [00:00<?, ? examples/s]Map:   0%|          | 0/2048 [00:00<?, ? examples/s]Map:   0%|          | 0/2048 [00:00<?, ? examples/s]Map:   0%|          | 0/2048 [00:00<?, ? examples/s]Map:   0%|          | 0/2048 [00:00<?, ? examples/s]Map:  14%|█▍        | 285/2048 [00:00<00:00, 2828.41 examples/s]Map:  14%|█▍        | 282/2048 [00:00<00:00, 2799.49 examples/s]Map:  13%|█▎        | 271/2048 [00:00<00:00, 2692.33 examples/s]Map:  13%|█▎        | 274/2048 [00:00<00:00, 2718.54 examples/s]Map:  14%|█▍        | 292/2048 [00:00<00:00, 2894.15 examples/s]Map:  15%|█▍        | 297/2048 [00:00<00:00, 2940.96 examples/s]Map:  15%|█▌        | 314/2048 [00:00<00:00, 3114.28 examples/s]Map:  16%|█▌        | 319/2048 [00:00<00:00, 3166.73 examples/s]Map:  29%|██▉       | 603/2048 [00:00<00:00, 3030.21 examples/s]Map:  29%|██▉       | 601/2048 [00:00<00:00, 3024.66 examples/s]Map:  29%|██▉       | 596/2048 [00:00<00:00, 3011.56 examples/s]Map:  29%|██▉       | 597/2048 [00:00<00:00, 3019.15 examples/s]Map:  30%|██▉       | 609/2048 [00:00<00:00, 3044.12 examples/s]Map:  30%|███       | 623/2048 [00:00<00:00, 3121.71 examples/s]Map:  31%|███▏      | 640/2048 [00:00<00:00, 3184.54 examples/s]Map:  32%|███▏      | 647/2048 [00:00<00:00, 3226.68 examples/s]Map:  45%|████▍     | 919/2048 [00:00<00:00, 3078.11 examples/s]Map:  45%|████▍     | 915/2048 [00:00<00:00, 3075.01 examples/s]Map:  44%|████▍     | 899/2048 [00:00<00:00, 3015.87 examples/s]Map:  49%|████▉     | 1000/2048 [00:00<00:00, 2011.26 examples/s]Map:  49%|████▉     | 1000/2048 [00:00<00:00, 1979.04 examples/s]Map:  49%|████▉     | 1000/2048 [00:00<00:00, 2034.05 examples/s]Map:  49%|████▉     | 1000/2048 [00:00<00:00, 2057.94 examples/s]Map:  49%|████▉     | 1000/2048 [00:00<00:00, 2053.42 examples/s]Map:  65%|██████▌   | 1337/2048 [00:00<00:00, 2171.82 examples/s]Map:  66%|██████▌   | 1342/2048 [00:00<00:00, 2186.64 examples/s]Map:  66%|██████▌   | 1347/2048 [00:00<00:00, 2212.88 examples/s]Map:  65%|██████▍   | 1331/2048 [00:00<00:00, 2363.96 examples/s]Map:  65%|██████▌   | 1339/2048 [00:00<00:00, 2360.19 examples/s]Map:  65%|██████▌   | 1340/2048 [00:00<00:00, 2412.69 examples/s]Map:  66%|██████▌   | 1349/2048 [00:00<00:00, 2458.95 examples/s]Map:  65%|██████▍   | 1327/2048 [00:00<00:00, 2395.47 examples/s]Map:  80%|███████▉  | 1632/2048 [00:00<00:00, 2370.83 examples/s]Map:  80%|███████▉  | 1633/2048 [00:00<00:00, 2369.57 examples/s]Map:  80%|████████  | 1647/2048 [00:00<00:00, 2412.28 examples/s]Map:  80%|███████▉  | 1635/2048 [00:00<00:00, 2548.39 examples/s]Map:  80%|███████▉  | 1632/2048 [00:00<00:00, 2517.82 examples/s]Map:  80%|███████▉  | 1635/2048 [00:00<00:00, 2563.84 examples/s]Map:  81%|████████  | 1651/2048 [00:00<00:00, 2617.25 examples/s]Map:  79%|███████▉  | 1624/2048 [00:00<00:00, 2558.39 examples/s]Map:  94%|█████████▍| 1931/2048 [00:00<00:00, 2535.84 examples/s]Map:  94%|█████████▍| 1930/2048 [00:00<00:00, 2530.56 examples/s]Map:  95%|█████████▌| 1953/2048 [00:00<00:00, 2583.82 examples/s]Map:  94%|█████████▍| 1935/2048 [00:00<00:00, 2676.41 examples/s]Map:  94%|█████████▍| 1926/2048 [00:00<00:00, 2637.76 examples/s]Map:  94%|█████████▍| 1935/2048 [00:00<00:00, 2688.60 examples/s]Map:  96%|█████████▌| 1959/2048 [00:00<00:00, 2746.08 examples/s]Map:  94%|█████████▍| 1920/2048 [00:00<00:00, 2672.08 examples/s]Map: 100%|██████████| 2048/2048 [00:00<00:00, 2185.69 examples/s]
+Map: 100%|██████████| 2048/2048 [00:00<00:00, 2158.73 examples/s]
+Map: 100%|██████████| 2048/2048 [00:00<00:00, 2146.52 examples/s]
+Map: 100%|██████████| 2048/2048 [00:00<00:00, 2145.57 examples/s]
+Map: 100%|██████████| 2048/2048 [00:00<00:00, 2228.97 examples/s]
+Map: 100%|██████████| 2048/2048 [00:00<00:00, 2176.93 examples/s]
+Map: 100%|██████████| 2048/2048 [00:00<00:00, 2130.26 examples/s]
+[rank6]: Traceback (most recent call last):
+[rank6]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 193, in <module>
+[rank6]:     main()
+[rank6]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 121, in main
+[rank6]:     ds = ds.map(tok_fn, remove_columns=ds.column_names)
+[rank6]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 562, in wrapper
+[rank6]:     out: Union["Dataset", "DatasetDict"] = func(self, *args, **kwargs)
+[rank6]:                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 3343, in map
+[rank6]:     for rank, done, content in Dataset._map_single(**unprocessed_kwargs):
+[rank6]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 3754, in _map_single
+[rank6]:     yield rank, True, Dataset.from_file(cache_file_name, info=info, split=shard.split)
+[rank6]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 813, in from_file
+[rank6]:     table = ArrowReader.read_table(filename, in_memory=in_memory)
+[rank6]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/datasets/arrow_reader.py", line 329, in read_table
+[rank6]:     return table_cls.from_file(filename)
+[rank6]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/datasets/table.py", line 1017, in from_file
+[rank6]:     table = _memory_mapped_arrow_table_from_file(filename)
+[rank6]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/datasets/table.py", line 63, in _memory_mapped_arrow_table_from_file
+[rank6]:     opened_stream = _memory_mapped_record_batch_reader_from_file(filename)
+[rank6]:                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/datasets/table.py", line 48, in _memory_mapped_record_batch_reader_from_file
+[rank6]:     memory_mapped_stream = pa.memory_map(filename)
+[rank6]:                            ^^^^^^^^^^^^^^^^^^^^^^^
+[rank6]:   File "pyarrow/io.pxi", line 1143, in pyarrow.lib.memory_map
+[rank6]:   File "pyarrow/io.pxi", line 1090, in pyarrow.lib.MemoryMappedFile._open
+[rank6]:   File "pyarrow/error.pxi", line 155, in pyarrow.lib.pyarrow_internal_check_status
+[rank6]:   File "pyarrow/error.pxi", line 92, in pyarrow.lib.check_status
+[rank6]: FileNotFoundError: [Errno 2] Failed to open local file '/mnt/sharedfs/nebius-demoday-test/.cache/huggingface/datasets/yahma___alpaca-cleaned/default/0.0.0/12567cabf869d7c92e573c7c783905fc160e9639/cache-f06485ba1cdbfaab.arrow'. Detail: [errno 2] No such file or directory
+Map: 100%|██████████| 2048/2048 [00:00<00:00, 2182.26 examples/s]
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 193, in <module>
+[rank0]:     main()
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 154, in main
+[rank0]:     trainer.train()
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2325, in train
+[rank0]:     return inner_training_loop(
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2480, in _inner_training_loop
+[rank0]:     model, self.optimizer = self.accelerator.prepare(self.model, self.optimizer)
+[rank0]:                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1559, in prepare
+[rank0]:     result = tuple(
+[rank0]:              ^^^^^^
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1560, in <genexpr>
+[rank0]:     self._prepare_one(obj, first_pass=True, device_placement=d) for obj, d in zip(args, device_placement)
+[rank0]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1402, in _prepare_one
+[rank0]:     return self.prepare_model(obj, device_placement=device_placement)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1847, in prepare_model
+[rank0]:     model = torch.nn.parallel.DistributedDataParallel(
+[rank0]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 825, in __init__
+[rank0]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/utils.py", line 288, in _verify_param_shape_across_processes
+[rank0]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: RuntimeError: ProcessGroupWrapper: Monitored Barrier encountered error running collective: CollectiveFingerPrint(SequenceNumber=1, OpType=ALLGATHER, TensorShape=[1], TensorDtypes=Long, TensorDeviceTypes=TensorOptions(dtype=float (default), device=cuda, layout=Strided (default), requires_grad=false (default), pinned_memory=false (default), memory_format=(nullopt))). Error: 
+[rank0]: [../third_party/gloo/gloo/transport/tcp/pair.cc:534] Connection closed by peer [127.0.0.1]:46301
+[rank1]:[E125 01:26:23.676821673 ProcessGroupGloo.cpp:143] Rank 1 successfully reached monitoredBarrier, but received errors while waiting for send/recv from rank 0. Please check rank 0 logs for faulty rank.
+[rank2]:[E125 01:26:23.676879582 ProcessGroupGloo.cpp:143] Rank 2 successfully reached monitoredBarrier, but received errors while waiting for send/recv from rank 0. Please check rank 0 logs for faulty rank.
+[rank3]:[E125 01:26:23.676903444 ProcessGroupGloo.cpp:143] Rank 3 successfully reached monitoredBarrier, but received errors while waiting for send/recv from rank 0. Please check rank 0 logs for faulty rank.
+[rank4]:[E125 01:26:23.677122291 ProcessGroupGloo.cpp:143] Rank 4 successfully reached monitoredBarrier, but received errors while waiting for send/recv from rank 0. Please check rank 0 logs for faulty rank.
+[rank5]:[E125 01:26:23.687052298 ProcessGroupGloo.cpp:143] Rank 5 successfully reached monitoredBarrier, but received errors while waiting for send/recv from rank 0. Please check rank 0 logs for faulty rank.
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 193, in <module>
+[rank1]:     main()
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 154, in main
+[rank1]:     trainer.train()
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2325, in train
+[rank1]:     return inner_training_loop(
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2480, in _inner_training_loop
+[rank1]:     model, self.optimizer = self.accelerator.prepare(self.model, self.optimizer)
+[rank1]:                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1559, in prepare
+[rank1]:     result = tuple(
+[rank1]:              ^^^^^^
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1560, in <genexpr>
+[rank1]:     self._prepare_one(obj, first_pass=True, device_placement=d) for obj, d in zip(args, device_placement)
+[rank1]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1402, in _prepare_one
+[rank1]:     return self.prepare_model(obj, device_placement=device_placement)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1847, in prepare_model
+[rank1]:     model = torch.nn.parallel.DistributedDataParallel(
+[rank1]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 825, in __init__
+[rank1]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/utils.py", line 288, in _verify_param_shape_across_processes
+[rank1]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]: RuntimeError: Rank 1 successfully reached monitoredBarrier, but received errors while waiting for send/recv from rank 0. Please check rank 0 logs for faulty rank.
+[rank1]:  Original exception: 
+[rank1]: [../third_party/gloo/gloo/transport/tcp/pair.cc:525] Read error [127.0.0.1]:26511: Connection reset by peer
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 193, in <module>
+[rank3]:     main()
+[rank3]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 154, in main
+[rank3]:     trainer.train()
+[rank3]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2325, in train
+[rank3]:     return inner_training_loop(
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2480, in _inner_training_loop
+[rank3]:     model, self.optimizer = self.accelerator.prepare(self.model, self.optimizer)
+[rank3]:                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1559, in prepare
+[rank3]:     result = tuple(
+[rank3]:              ^^^^^^
+[rank3]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1560, in <genexpr>
+[rank3]:     self._prepare_one(obj, first_pass=True, device_placement=d) for obj, d in zip(args, device_placement)
+[rank3]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1402, in _prepare_one
+[rank3]:     return self.prepare_model(obj, device_placement=device_placement)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1847, in prepare_model
+[rank3]:     model = torch.nn.parallel.DistributedDataParallel(
+[rank3]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 825, in __init__
+[rank3]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank3]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/utils.py", line 288, in _verify_param_shape_across_processes
+[rank3]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank3]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank3]: RuntimeError: Rank 3 successfully reached monitoredBarrier, but received errors while waiting for send/recv from rank 0. Please check rank 0 logs for faulty rank.
+[rank3]:  Original exception: 
+[rank3]: [../third_party/gloo/gloo/transport/tcp/pair.cc:525] Read error [127.0.0.1]:26511: Connection reset by peer
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 193, in <module>
+[rank2]:     main()
+[rank2]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 154, in main
+[rank2]:     trainer.train()
+[rank2]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2325, in train
+[rank2]:     return inner_training_loop(
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2480, in _inner_training_loop
+[rank2]:     model, self.optimizer = self.accelerator.prepare(self.model, self.optimizer)
+[rank2]:                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1559, in prepare
+[rank2]:     result = tuple(
+[rank2]:              ^^^^^^
+[rank2]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1560, in <genexpr>
+[rank2]:     self._prepare_one(obj, first_pass=True, device_placement=d) for obj, d in zip(args, device_placement)
+[rank2]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1402, in _prepare_one
+[rank2]:     return self.prepare_model(obj, device_placement=device_placement)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1847, in prepare_model
+[rank2]:     model = torch.nn.parallel.DistributedDataParallel(
+[rank2]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 825, in __init__
+[rank2]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank2]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/utils.py", line 288, in _verify_param_shape_across_processes
+[rank2]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank2]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank2]: RuntimeError: Rank 2 successfully reached monitoredBarrier, but received errors while waiting for send/recv from rank 0. Please check rank 0 logs for faulty rank.
+[rank2]:  Original exception: 
+[rank2]: [../third_party/gloo/gloo/transport/tcp/pair.cc:525] Read error [127.0.0.1]:26511: Connection reset by peer
+[rank4]: Traceback (most recent call last):
+[rank4]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 193, in <module>
+[rank4]:     main()
+[rank4]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 154, in main
+[rank4]:     trainer.train()
+[rank4]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2325, in train
+[rank4]:     return inner_training_loop(
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2480, in _inner_training_loop
+[rank4]:     model, self.optimizer = self.accelerator.prepare(self.model, self.optimizer)
+[rank4]:                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1559, in prepare
+[rank4]:     result = tuple(
+[rank4]:              ^^^^^^
+[rank4]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1560, in <genexpr>
+[rank4]:     self._prepare_one(obj, first_pass=True, device_placement=d) for obj, d in zip(args, device_placement)
+[rank4]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1402, in _prepare_one
+[rank4]:     return self.prepare_model(obj, device_placement=device_placement)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1847, in prepare_model
+[rank4]:     model = torch.nn.parallel.DistributedDataParallel(
+[rank4]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 825, in __init__
+[rank4]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank4]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/utils.py", line 288, in _verify_param_shape_across_processes
+[rank4]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]: RuntimeError: Rank 4 successfully reached monitoredBarrier, but received errors while waiting for send/recv from rank 0. Please check rank 0 logs for faulty rank.
+[rank4]:  Original exception: 
+[rank4]: [../third_party/gloo/gloo/transport/tcp/pair.cc:525] Read error [127.0.0.1]:50891: Connection reset by peer
+[rank7]:[E125 01:26:23.697052817 ProcessGroupGloo.cpp:143] Rank 7 successfully reached monitoredBarrier, but received errors while waiting for send/recv from rank 0. Please check rank 0 logs for faulty rank.
+[rank5]: Traceback (most recent call last):
+[rank5]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 193, in <module>
+[rank5]:     main()
+[rank5]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 154, in main
+[rank5]:     trainer.train()
+[rank5]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2325, in train
+[rank5]:     return inner_training_loop(
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2480, in _inner_training_loop
+[rank5]:     model, self.optimizer = self.accelerator.prepare(self.model, self.optimizer)
+[rank5]:                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1559, in prepare
+[rank5]:     result = tuple(
+[rank5]:              ^^^^^^
+[rank5]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1560, in <genexpr>
+[rank5]:     self._prepare_one(obj, first_pass=True, device_placement=d) for obj, d in zip(args, device_placement)
+[rank5]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1402, in _prepare_one
+[rank5]:     return self.prepare_model(obj, device_placement=device_placement)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1847, in prepare_model
+[rank5]:     model = torch.nn.parallel.DistributedDataParallel(
+[rank5]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 825, in __init__
+[rank5]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank5]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/utils.py", line 288, in _verify_param_shape_across_processes
+[rank5]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]: RuntimeError: Rank 5 successfully reached monitoredBarrier, but received errors while waiting for send/recv from rank 0. Please check rank 0 logs for faulty rank.
+[rank5]:  Original exception: 
+[rank5]: [../third_party/gloo/gloo/transport/tcp/pair.cc:525] Read error [127.0.0.1]:26511: Connection reset by peer
+[rank7]: Traceback (most recent call last):
+[rank7]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 193, in <module>
+[rank7]:     main()
+[rank7]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_ddp_min.py", line 154, in main
+[rank7]:     trainer.train()
+[rank7]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2325, in train
+[rank7]:     return inner_training_loop(
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2480, in _inner_training_loop
+[rank7]:     model, self.optimizer = self.accelerator.prepare(self.model, self.optimizer)
+[rank7]:                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1559, in prepare
+[rank7]:     result = tuple(
+[rank7]:              ^^^^^^
+[rank7]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1560, in <genexpr>
+[rank7]:     self._prepare_one(obj, first_pass=True, device_placement=d) for obj, d in zip(args, device_placement)
+[rank7]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1402, in _prepare_one
+[rank7]:     return self.prepare_model(obj, device_placement=device_placement)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 1847, in prepare_model
+[rank7]:     model = torch.nn.parallel.DistributedDataParallel(
+[rank7]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 825, in __init__
+[rank7]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank7]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/utils.py", line 288, in _verify_param_shape_across_processes
+[rank7]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank7]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank7]: RuntimeError: Rank 7 successfully reached monitoredBarrier, but received errors while waiting for send/recv from rank 0. Please check rank 0 logs for faulty rank.
+[rank7]:  Original exception: 
+[rank7]: [../third_party/gloo/gloo/transport/tcp/pair.cc:534] Connection closed by peer [127.0.0.1]:39110
+[rank0]:[W125 01:26:23.716922262 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+W0125 01:26:24.548000 163842 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 163911 closing signal SIGTERM
+W0125 01:26:24.552000 163842 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 163912 closing signal SIGTERM
+W0125 01:26:24.553000 163842 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 163913 closing signal SIGTERM
+W0125 01:26:24.555000 163842 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 163914 closing signal SIGTERM
+W0125 01:26:24.556000 163842 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 163915 closing signal SIGTERM
+W0125 01:26:24.558000 163842 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 163916 closing signal SIGTERM
+W0125 01:26:24.559000 163842 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 163918 closing signal SIGTERM
+E0125 01:26:25.879000 163842 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 6 (pid: 163917) of binary: /mnt/sharedfs/nebius-demoday-test/.venv/bin/python
+Traceback (most recent call last):
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/bin/torchrun", line 7, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/run.py", line 919, in main
+    run(args)
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/run.py", line 910, in run
+    elastic_launch(
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+training/src/train_sft_ddp_min.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-01-25_01:26:24
+  host      : worker0
+  rank      : 6 (local_rank: 6)
+  exitcode  : 1 (pid: 163917)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

@@ -1,0 +1,116 @@
++ mkdir -p /mnt/sharedfs/nebius-demoday-test/slurm-logs
++ source training/env.sh
+++ VENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ '[' -d /mnt/sharedfs/nebius-demoday-test/.venv ']'
+++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
++++ deactivate nondestructive
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ hash -r
++++ '[' -n '' ']'
++++ unset VIRTUAL_ENV
++++ unset VIRTUAL_ENV_PROMPT
++++ '[' '!' nondestructive = nondestructive ']'
++++ '[' linux-gnu = cygwin ']'
++++ '[' linux-gnu = msys ']'
++++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ _OLD_VIRTUAL_PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ export PATH
++++ '[' -n '' ']'
++++ '[' -z '' ']'
++++ _OLD_VIRTUAL_PS1=
++++ PS1='(.venv) '
++++ export PS1
++++ VIRTUAL_ENV_PROMPT='(.venv) '
++++ export VIRTUAL_ENV_PROMPT
++++ hash -r
+++ set -euo pipefail
+++ REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+++ export RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ export HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ mkdir -p /mnt/sharedfs/nebius-demoday-test/results/training /mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ echo REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+++ echo RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ echo HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
+++ deactivate nondestructive
+++ '[' -n /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin ']'
+++ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ unset _OLD_VIRTUAL_PATH
+++ '[' -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ '[' linux-gnu = cygwin ']'
+++ '[' linux-gnu = msys ']'
+++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ _OLD_VIRTUAL_PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1='(.venv) '
+++ PS1='(.venv) (.venv) '
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(.venv) '
+++ export VIRTUAL_ENV_PROMPT
+++ hash -r
++ export NCCL_DEBUG=INFO
++ NCCL_DEBUG=INFO
++ export TORCH_DISTRIBUTED_DEBUG=DETAIL
++ TORCH_DISTRIBUTED_DEBUG=DETAIL
++ export 'NCCL_SOCKET_IFNAME=^lo,docker0'
++ NCCL_SOCKET_IFNAME='^lo,docker0'
+++ hostname
++ echo HOST=worker0
++ echo CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
++ nvidia-smi -L
++ torchrun --nproc_per_node=8 training/src/train_sft_ddp_min.py --run_name sft_ddp_1node_smoke --max_steps 10 --seq_len 512 --bsz 1 --grad_accum 1 --subset_size 2048
+W0125 01:40:39.585000 167432 torch/distributed/run.py:793] 
+W0125 01:40:39.585000 167432 torch/distributed/run.py:793] *****************************************
+W0125 01:40:39.585000 167432 torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0125 01:40:39.585000 167432 torch/distributed/run.py:793] *****************************************
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.21s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.42s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.44s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.47s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.45s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.39s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.41s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.43s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.37it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.37it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.34it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.39it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.42it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.39it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.37it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.31s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.44s/it]
+tokenizing:   0%|          | 0/2048 [00:00<?, ? examples/s]tokenizing:  15%|█▌        | 310/2048 [00:00<00:00, 3077.14 examples/s]tokenizing:  31%|███       | 632/2048 [00:00<00:00, 3155.94 examples/s]tokenizing:  49%|████▉     | 1000/2048 [00:00<00:00, 2045.89 examples/s]tokenizing:  66%|██████▌   | 1349/2048 [00:00<00:00, 2449.51 examples/s]tokenizing:  81%|████████  | 1658/2048 [00:00<00:00, 2631.60 examples/s]tokenizing:  96%|█████████▋| 1972/2048 [00:00<00:00, 2776.73 examples/s]tokenizing: 100%|██████████| 2048/2048 [00:00<00:00, 2235.40 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/2048 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 2048/2048 [00:00<00:00, 44344.76 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 2048/2048 [00:00<00:00, 43668.46 examples/s]
+[rank7]:[W125 01:41:20.580923169 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 7]  using GPU 7 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank6]:[W125 01:41:20.580975666 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 6]  using GPU 6 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank5]:[W125 01:41:20.581014492 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 5]  using GPU 5 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank0]:[W125 01:41:20.581020616 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank1]:[W125 01:41:20.581034393 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank4]:[W125 01:41:20.581060164 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 4]  using GPU 4 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank2]:[W125 01:41:20.581076840 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 2]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank3]:[W125 01:41:20.581090222 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 3]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:00<00:07,  1.25it/s]                                               10%|█         | 1/10 [00:00<00:07,  1.25it/s] 20%|██        | 2/10 [00:01<00:03,  2.07it/s]                                               20%|██        | 2/10 [00:01<00:03,  2.07it/s] 30%|███       | 3/10 [00:01<00:02,  2.63it/s]                                               30%|███       | 3/10 [00:01<00:02,  2.63it/s] 40%|████      | 4/10 [00:01<00:01,  3.03it/s]                                               40%|████      | 4/10 [00:01<00:01,  3.03it/s] 50%|█████     | 5/10 [00:01<00:01,  3.27it/s]                                               50%|█████     | 5/10 [00:01<00:01,  3.27it/s] 60%|██████    | 6/10 [00:02<00:01,  3.48it/s]                                               60%|██████    | 6/10 [00:02<00:01,  3.48it/s] 70%|███████   | 7/10 [00:02<00:00,  3.62it/s]                                               70%|███████   | 7/10 [00:02<00:00,  3.62it/s] 80%|████████  | 8/10 [00:02<00:00,  3.70it/s]                                               80%|████████  | 8/10 [00:02<00:00,  3.70it/s] 90%|█████████ | 9/10 [00:02<00:00,  3.78it/s]                                               90%|█████████ | 9/10 [00:02<00:00,  3.78it/s]100%|██████████| 10/10 [00:03<00:00,  3.83it/s]                                               100%|██████████| 10/10 [00:03<00:00,  3.83it/s]                                               100%|██████████| 10/10 [00:06<00:00,  3.83it/s]100%|██████████| 10/10 [00:06<00:00,  1.60it/s]
+[W125 01:41:30.694147441 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())

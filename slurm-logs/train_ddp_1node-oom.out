@@ -1,0 +1,638 @@
+REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+HOST=worker0
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+GPU 0: NVIDIA H100 80GB HBM3 (UUID: GPU-f1fdd6f0-26c5-f5b0-4cd6-1b8f661078d9)
+GPU 1: NVIDIA H100 80GB HBM3 (UUID: GPU-f41faf67-0ec8-e3ca-352a-3b8e1e8daf77)
+GPU 2: NVIDIA H100 80GB HBM3 (UUID: GPU-3daa58bd-98c9-375c-add8-1b6c4f2d1a52)
+GPU 3: NVIDIA H100 80GB HBM3 (UUID: GPU-91e53cc9-1de5-521c-b38f-6214701c3ea2)
+GPU 4: NVIDIA H100 80GB HBM3 (UUID: GPU-e7d00365-4a2a-81b2-401d-dae829fb6a4b)
+GPU 5: NVIDIA H100 80GB HBM3 (UUID: GPU-ac7a1dc6-6ea6-1da9-bf52-08aa253fed1b)
+GPU 6: NVIDIA H100 80GB HBM3 (UUID: GPU-46b9ecad-16b9-9b3a-86dd-6b73e6ef194e)
+GPU 7: NVIDIA H100 80GB HBM3 (UUID: GPU-f2ce0bc4-c215-2f21-9c2f-f48ad52975f7)
+DDP init: RANK=6 LOCAL_RANK=6 WORLD_SIZE=8
+DDP init: RANK=0 LOCAL_RANK=0 WORLD_SIZE=8
+DDP init: RANK=3 LOCAL_RANK=3 WORLD_SIZE=8
+DDP init: RANK=1 LOCAL_RANK=1 WORLD_SIZE=8
+DDP init: RANK=2 LOCAL_RANK=2 WORLD_SIZE=8
+DDP init: RANK=5 LOCAL_RANK=5 WORLD_SIZE=8
+DDP init: RANK=7 LOCAL_RANK=7 WORLD_SIZE=8
+DDP init: RANK=4 LOCAL_RANK=4 WORLD_SIZE=8
+worker0:157178:157178 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157178:157178 [0] NCCL INFO Bootstrap : Using eth0:10.6.22.67<0>
+worker0:157178:157178 [0] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker0:157178:157178 [0] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker0:157178:157178 [0] NCCL INFO NET/Plugin: Using internal network plugin.
+worker0:157178:157178 [0] NCCL INFO cudaDriverVersion 12080
+NCCL version 2.21.5+cuda12.4
+worker0:157179:157179 [1] NCCL INFO cudaDriverVersion 12080
+worker0:157179:157179 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157179:157179 [1] NCCL INFO Bootstrap : Using eth0:10.6.22.67<0>
+worker0:157182:157182 [3] NCCL INFO cudaDriverVersion 12080
+worker0:157182:157182 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157182:157182 [3] NCCL INFO Bootstrap : Using eth0:10.6.22.67<0>
+worker0:157179:157179 [1] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker0:157179:157179 [1] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker0:157179:157179 [1] NCCL INFO NET/Plugin: Using internal network plugin.
+worker0:157186:157186 [7] NCCL INFO cudaDriverVersion 12080
+worker0:157186:157186 [7] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157186:157186 [7] NCCL INFO Bootstrap : Using eth0:10.6.22.67<0>
+worker0:157182:157182 [3] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker0:157182:157182 [3] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker0:157182:157182 [3] NCCL INFO NET/Plugin: Using internal network plugin.
+worker0:157183:157183 [4] NCCL INFO cudaDriverVersion 12080
+worker0:157183:157183 [4] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157183:157183 [4] NCCL INFO Bootstrap : Using eth0:10.6.22.67<0>
+worker0:157186:157186 [7] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker0:157186:157186 [7] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker0:157186:157186 [7] NCCL INFO NET/Plugin: Using internal network plugin.
+worker0:157183:157183 [4] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker0:157183:157183 [4] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker0:157183:157183 [4] NCCL INFO NET/Plugin: Using internal network plugin.
+worker0:157185:157185 [6] NCCL INFO cudaDriverVersion 12080
+worker0:157185:157185 [6] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157184:157184 [5] NCCL INFO cudaDriverVersion 12080
+worker0:157185:157185 [6] NCCL INFO Bootstrap : Using eth0:10.6.22.67<0>
+worker0:157181:157181 [2] NCCL INFO cudaDriverVersion 12080
+worker0:157184:157184 [5] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157181:157181 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157184:157184 [5] NCCL INFO Bootstrap : Using eth0:10.6.22.67<0>
+worker0:157181:157181 [2] NCCL INFO Bootstrap : Using eth0:10.6.22.67<0>
+worker0:157185:157185 [6] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker0:157185:157185 [6] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker0:157185:157185 [6] NCCL INFO NET/Plugin: Using internal network plugin.
+worker0:157184:157184 [5] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker0:157184:157184 [5] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker0:157184:157184 [5] NCCL INFO NET/Plugin: Using internal network plugin.
+worker0:157181:157181 [2] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker0:157181:157181 [2] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker0:157181:157181 [2] NCCL INFO NET/Plugin: Using internal network plugin.
+worker0:157178:158261 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker0:157178:158261 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157179:158263 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker0:157186:158265 [7] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker0:157183:158266 [4] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker0:157179:158263 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157182:158264 [3] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker0:157186:158265 [7] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157183:158266 [4] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157182:158264 [3] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157178:158261 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.6.22.67<0>
+worker0:157178:158261 [0] NCCL INFO Using non-device net plugin version 0
+worker0:157178:158261 [0] NCCL INFO Using network IB
+worker0:157179:158263 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.6.22.67<0>
+worker0:157179:158263 [1] NCCL INFO Using non-device net plugin version 0
+worker0:157179:158263 [1] NCCL INFO Using network IB
+worker0:157186:158265 [7] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.6.22.67<0>
+worker0:157184:158268 [5] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker0:157186:158265 [7] NCCL INFO Using non-device net plugin version 0
+worker0:157186:158265 [7] NCCL INFO Using network IB
+worker0:157183:158266 [4] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.6.22.67<0>
+worker0:157183:158266 [4] NCCL INFO Using non-device net plugin version 0
+worker0:157183:158266 [4] NCCL INFO Using network IB
+worker0:157184:158268 [5] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157182:158264 [3] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.6.22.67<0>
+worker0:157182:158264 [3] NCCL INFO Using non-device net plugin version 0
+worker0:157182:158264 [3] NCCL INFO Using network IB
+worker0:157181:158269 [2] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker0:157181:158269 [2] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157184:158268 [5] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.6.22.67<0>
+worker0:157184:158268 [5] NCCL INFO Using non-device net plugin version 0
+worker0:157184:158268 [5] NCCL INFO Using network IB
+worker0:157181:158269 [2] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.6.22.67<0>
+worker0:157181:158269 [2] NCCL INFO Using non-device net plugin version 0
+worker0:157181:158269 [2] NCCL INFO Using network IB
+worker0:157185:158267 [6] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker0:157185:158267 [6] NCCL INFO NCCL_SOCKET_IFNAME set by environment to ^lo,docker0
+worker0:157185:158267 [6] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.6.22.67<0>
+worker0:157185:158267 [6] NCCL INFO Using non-device net plugin version 0
+worker0:157185:158267 [6] NCCL INFO Using network IB
+worker0:157178:158261 [0] NCCL INFO DMA-BUF is available on GPU device 0
+worker0:157179:158263 [1] NCCL INFO DMA-BUF is available on GPU device 1
+worker0:157186:158265 [7] NCCL INFO DMA-BUF is available on GPU device 7
+worker0:157183:158266 [4] NCCL INFO DMA-BUF is available on GPU device 4
+worker0:157182:158264 [3] NCCL INFO DMA-BUF is available on GPU device 3
+worker0:157184:158268 [5] NCCL INFO DMA-BUF is available on GPU device 5
+worker0:157181:158269 [2] NCCL INFO DMA-BUF is available on GPU device 2
+worker0:157185:158267 [6] NCCL INFO DMA-BUF is available on GPU device 6
+worker0:157182:158264 [3] NCCL INFO ncclCommInitRank comm 0x2e177f90 rank 3 nranks 8 cudaDev 3 nvmlDev 3 busId 99000 commId 0xb9ec1e31b042475e - Init START
+worker0:157185:158267 [6] NCCL INFO ncclCommInitRank comm 0x142b80f0 rank 6 nranks 8 cudaDev 6 nvmlDev 6 busId b3000 commId 0xb9ec1e31b042475e - Init START
+worker0:157184:158268 [5] NCCL INFO ncclCommInitRank comm 0x433411d0 rank 5 nranks 8 cudaDev 5 nvmlDev 5 busId af000 commId 0xb9ec1e31b042475e - Init START
+worker0:157181:158269 [2] NCCL INFO ncclCommInitRank comm 0x29b8a860 rank 2 nranks 8 cudaDev 2 nvmlDev 2 busId 95000 commId 0xb9ec1e31b042475e - Init START
+worker0:157186:158265 [7] NCCL INFO ncclCommInitRank comm 0x13b829e0 rank 7 nranks 8 cudaDev 7 nvmlDev 7 busId b7000 commId 0xb9ec1e31b042475e - Init START
+worker0:157183:158266 [4] NCCL INFO ncclCommInitRank comm 0x49ebf770 rank 4 nranks 8 cudaDev 4 nvmlDev 4 busId ab000 commId 0xb9ec1e31b042475e - Init START
+worker0:157179:158263 [1] NCCL INFO ncclCommInitRank comm 0x3e2f1640 rank 1 nranks 8 cudaDev 1 nvmlDev 1 busId 91000 commId 0xb9ec1e31b042475e - Init START
+worker0:157178:158261 [0] NCCL INFO ncclCommInitRank comm 0x22eca450 rank 0 nranks 8 cudaDev 0 nvmlDev 0 busId 8d000 commId 0xb9ec1e31b042475e - Init START
+worker0:157182:158264 [3] NCCL INFO MNNVL busId 0x99000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker0:157185:158267 [6] NCCL INFO MNNVL busId 0xb3000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker0:157184:158268 [5] NCCL INFO MNNVL busId 0xaf000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker0:157181:158269 [2] NCCL INFO MNNVL busId 0x95000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker0:157186:158265 [7] NCCL INFO MNNVL busId 0xb7000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker0:157183:158266 [4] NCCL INFO MNNVL busId 0xab000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker0:157179:158263 [1] NCCL INFO MNNVL busId 0x91000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker0:157178:158261 [0] NCCL INFO MNNVL busId 0x8d000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker0:157182:158264 [3] NCCL INFO Setting affinity for GPU 3 to ffffffff,ffffffff
+worker0:157182:158264 [3] NCCL INFO NVLS multicast support is available on dev 3
+worker0:157181:158269 [2] NCCL INFO Setting affinity for GPU 2 to ffffffff,ffffffff
+worker0:157181:158269 [2] NCCL INFO NVLS multicast support is available on dev 2
+worker0:157184:158268 [5] NCCL INFO Setting affinity for GPU 5 to ffffffff,ffffffff,00000000,00000000
+worker0:157184:158268 [5] NCCL INFO NVLS multicast support is available on dev 5
+worker0:157185:158267 [6] NCCL INFO Setting affinity for GPU 6 to ffffffff,ffffffff,00000000,00000000
+worker0:157185:158267 [6] NCCL INFO NVLS multicast support is available on dev 6
+worker0:157183:158266 [4] NCCL INFO Setting affinity for GPU 4 to ffffffff,ffffffff,00000000,00000000
+worker0:157183:158266 [4] NCCL INFO NVLS multicast support is available on dev 4
+worker0:157186:158265 [7] NCCL INFO Setting affinity for GPU 7 to ffffffff,ffffffff,00000000,00000000
+worker0:157186:158265 [7] NCCL INFO NVLS multicast support is available on dev 7
+worker0:157179:158263 [1] NCCL INFO Setting affinity for GPU 1 to ffffffff,ffffffff
+worker0:157178:158261 [0] NCCL INFO Setting affinity for GPU 0 to ffffffff,ffffffff
+worker0:157178:158261 [0] NCCL INFO NVLS multicast support is available on dev 0
+worker0:157179:158263 [1] NCCL INFO NVLS multicast support is available on dev 1
+worker0:157178:158261 [0] NCCL INFO comm 0x22eca450 rank 0 nRanks 8 nNodes 1 localRanks 8 localRank 0 MNNVL 0
+worker0:157178:158261 [0] NCCL INFO Channel 00/24 :    0   1   2   3   4   5   6   7
+worker0:157185:158267 [6] NCCL INFO comm 0x142b80f0 rank 6 nRanks 8 nNodes 1 localRanks 8 localRank 6 MNNVL 0
+worker0:157185:158267 [6] NCCL INFO Trees [0] 7/-1/-1->6->5 [1] 7/-1/-1->6->5 [2] 7/-1/-1->6->5 [3] 7/-1/-1->6->5 [4] 7/-1/-1->6->5 [5] 7/-1/-1->6->5 [6] 7/-1/-1->6->5 [7] 7/-1/-1->6->5 [8] 7/-1/-1->6->5 [9] 7/-1/-1->6->5 [10] 7/-1/-1->6->5 [11] 7/-1/-1->6->5 [12] 7/-1/-1->6->5 [13] 7/-1/-1->6->5 [14] 7/-1/-1->6->5 [15] 7/-1/-1->6->5 [16] 7/-1/-1->6->5 [17] 7/-1/-1->6->5 [18] 7/-1/-1->6->5 [19] 7/-1/-1->6->5 [20] 7/-1/-1->6->5 [21] 7/-1/-1->6->5 [22] 7/-1/-1->6->5 [23] 7/-1/-1->6->5
+worker0:157184:158268 [5] NCCL INFO comm 0x433411d0 rank 5 nRanks 8 nNodes 1 localRanks 8 localRank 5 MNNVL 0
+worker0:157179:158263 [1] NCCL INFO comm 0x3e2f1640 rank 1 nRanks 8 nNodes 1 localRanks 8 localRank 1 MNNVL 0
+worker0:157179:158263 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] 2/-1/-1->1->0 [3] 2/-1/-1->1->0 [4] 2/-1/-1->1->0 [5] 2/-1/-1->1->0 [6] 2/-1/-1->1->0 [7] 2/-1/-1->1->0 [8] 2/-1/-1->1->0 [9] 2/-1/-1->1->0 [10] 2/-1/-1->1->0 [11] 2/-1/-1->1->0 [12] 2/-1/-1->1->0 [13] 2/-1/-1->1->0 [14] 2/-1/-1->1->0 [15] 2/-1/-1->1->0 [16] 2/-1/-1->1->0 [17] 2/-1/-1->1->0 [18] 2/-1/-1->1->0 [19] 2/-1/-1->1->0 [20] 2/-1/-1->1->0 [21] 2/-1/-1->1->0 [22] 2/-1/-1->1->0 [23] 2/-1/-1->1->0
+worker0:157186:158265 [7] NCCL INFO comm 0x13b829e0 rank 7 nRanks 8 nNodes 1 localRanks 8 localRank 7 MNNVL 0
+worker0:157183:158266 [4] NCCL INFO comm 0x49ebf770 rank 4 nRanks 8 nNodes 1 localRanks 8 localRank 4 MNNVL 0
+worker0:157183:158266 [4] NCCL INFO Trees [0] 5/-1/-1->4->3 [1] 5/-1/-1->4->3 [2] 5/-1/-1->4->3 [3] 5/-1/-1->4->3 [4] 5/-1/-1->4->3 [5] 5/-1/-1->4->3 [6] 5/-1/-1->4->3 [7] 5/-1/-1->4->3 [8] 5/-1/-1->4->3 [9] 5/-1/-1->4->3 [10] 5/-1/-1->4->3 [11] 5/-1/-1->4->3 [12] 5/-1/-1->4->3 [13] 5/-1/-1->4->3 [14] 5/-1/-1->4->3 [15] 5/-1/-1->4->3 [16] 5/-1/-1->4->3 [17] 5/-1/-1->4->3 [18] 5/-1/-1->4->3 [19] 5/-1/-1->4->3 [20] 5/-1/-1->4->3 [21] 5/-1/-1->4->3 [22] 5/-1/-1->4->3 [23] 5/-1/-1->4->3
+worker0:157181:158269 [2] NCCL INFO comm 0x29b8a860 rank 2 nRanks 8 nNodes 1 localRanks 8 localRank 2 MNNVL 0
+worker0:157181:158269 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 3/-1/-1->2->1 [3] 3/-1/-1->2->1 [4] 3/-1/-1->2->1 [5] 3/-1/-1->2->1 [6] 3/-1/-1->2->1 [7] 3/-1/-1->2->1 [8] 3/-1/-1->2->1 [9] 3/-1/-1->2->1 [10] 3/-1/-1->2->1 [11] 3/-1/-1->2->1 [12] 3/-1/-1->2->1 [13] 3/-1/-1->2->1 [14] 3/-1/-1->2->1 [15] 3/-1/-1->2->1 [16] 3/-1/-1->2->1 [17] 3/-1/-1->2->1 [18] 3/-1/-1->2->1 [19] 3/-1/-1->2->1 [20] 3/-1/-1->2->1 [21] 3/-1/-1->2->1 [22] 3/-1/-1->2->1 [23] 3/-1/-1->2->1
+worker0:157182:158264 [3] NCCL INFO comm 0x2e177f90 rank 3 nRanks 8 nNodes 1 localRanks 8 localRank 3 MNNVL 0
+worker0:157178:158261 [0] NCCL INFO Channel 01/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 02/24 :    0   1   2   3   4   5   6   7
+worker0:157185:158267 [6] NCCL INFO P2P Chunksize set to 524288
+worker0:157184:158268 [5] NCCL INFO Trees [0] 6/-1/-1->5->4 [1] 6/-1/-1->5->4 [2] 6/-1/-1->5->4 [3] 6/-1/-1->5->4 [4] 6/-1/-1->5->4 [5] 6/-1/-1->5->4 [6] 6/-1/-1->5->4 [7] 6/-1/-1->5->4 [8] 6/-1/-1->5->4 [9] 6/-1/-1->5->4 [10] 6/-1/-1->5->4 [11] 6/-1/-1->5->4 [12] 6/-1/-1->5->4 [13] 6/-1/-1->5->4 [14] 6/-1/-1->5->4 [15] 6/-1/-1->5->4 [16] 6/-1/-1->5->4 [17] 6/-1/-1->5->4 [18] 6/-1/-1->5->4 [19] 6/-1/-1->5->4 [20] 6/-1/-1->5->4 [21] 6/-1/-1->5->4 [22] 6/-1/-1->5->4 [23] 6/-1/-1->5->4
+worker0:157184:158268 [5] NCCL INFO P2P Chunksize set to 524288
+worker0:157179:158263 [1] NCCL INFO P2P Chunksize set to 524288
+worker0:157186:158265 [7] NCCL INFO Trees [0] -1/-1/-1->7->6 [1] -1/-1/-1->7->6 [2] -1/-1/-1->7->6 [3] -1/-1/-1->7->6 [4] -1/-1/-1->7->6 [5] -1/-1/-1->7->6 [6] -1/-1/-1->7->6 [7] -1/-1/-1->7->6 [8] -1/-1/-1->7->6 [9] -1/-1/-1->7->6 [10] -1/-1/-1->7->6 [11] -1/-1/-1->7->6 [12] -1/-1/-1->7->6 [13] -1/-1/-1->7->6 [14] -1/-1/-1->7->6 [15] -1/-1/-1->7->6 [16] -1/-1/-1->7->6 [17] -1/-1/-1->7->6 [18] -1/-1/-1->7->6 [19] -1/-1/-1->7->6 [20] -1/-1/-1->7->6 [21] -1/-1/-1->7->6 [22] -1/-1/-1->7->6 [23] -1/-1/-1->7->6
+worker0:157186:158265 [7] NCCL INFO P2P Chunksize set to 524288
+worker0:157183:158266 [4] NCCL INFO P2P Chunksize set to 524288
+worker0:157181:158269 [2] NCCL INFO P2P Chunksize set to 524288
+worker0:157182:158264 [3] NCCL INFO Trees [0] 4/-1/-1->3->2 [1] 4/-1/-1->3->2 [2] 4/-1/-1->3->2 [3] 4/-1/-1->3->2 [4] 4/-1/-1->3->2 [5] 4/-1/-1->3->2 [6] 4/-1/-1->3->2 [7] 4/-1/-1->3->2 [8] 4/-1/-1->3->2 [9] 4/-1/-1->3->2 [10] 4/-1/-1->3->2 [11] 4/-1/-1->3->2 [12] 4/-1/-1->3->2 [13] 4/-1/-1->3->2 [14] 4/-1/-1->3->2 [15] 4/-1/-1->3->2 [16] 4/-1/-1->3->2 [17] 4/-1/-1->3->2 [18] 4/-1/-1->3->2 [19] 4/-1/-1->3->2 [20] 4/-1/-1->3->2 [21] 4/-1/-1->3->2 [22] 4/-1/-1->3->2 [23] 4/-1/-1->3->2
+worker0:157182:158264 [3] NCCL INFO P2P Chunksize set to 524288
+worker0:157178:158261 [0] NCCL INFO Channel 03/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 04/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 05/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 06/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 07/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 08/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 09/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 10/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 11/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 12/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 13/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 14/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 15/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 16/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 17/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 18/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 19/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 20/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 21/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 22/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Channel 23/24 :    0   1   2   3   4   5   6   7
+worker0:157178:158261 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1 [4] 1/-1/-1->0->-1 [5] 1/-1/-1->0->-1 [6] 1/-1/-1->0->-1 [7] 1/-1/-1->0->-1 [8] 1/-1/-1->0->-1 [9] 1/-1/-1->0->-1 [10] 1/-1/-1->0->-1 [11] 1/-1/-1->0->-1 [12] 1/-1/-1->0->-1 [13] 1/-1/-1->0->-1 [14] 1/-1/-1->0->-1 [15] 1/-1/-1->0->-1 [16] 1/-1/-1->0->-1 [17] 1/-1/-1->0->-1 [18] 1/-1/-1->0->-1 [19] 1/-1/-1->0->-1 [20] 1/-1/-1->0->-1 [21] 1/-1/-1->0->-1 [22] 1/-1/-1->0->-1 [23] 1/-1/-1->0->-1
+worker0:157178:158261 [0] NCCL INFO P2P Chunksize set to 524288
+worker0:157185:158267 [6] NCCL INFO Channel 00/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 01/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 02/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 03/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 04/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 05/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 06/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 02/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 07/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 00/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 03/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 00/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 02/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 08/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 00/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 00/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 01/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 04/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 01/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 09/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 01/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 01/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 02/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 05/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 02/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 04/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 10/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 02/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 02/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 03/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 06/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 03/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 05/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 11/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 03/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 03/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 04/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 07/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 04/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 06/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 12/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 04/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 04/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 05/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 08/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 05/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 07/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 04/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 13/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 05/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 05/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 06/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 09/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 06/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 08/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 05/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 14/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 06/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 06/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 07/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 10/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 07/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 09/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 15/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 07/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 07/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 08/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 11/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 08/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 10/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 07/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 16/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 08/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 08/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 09/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 12/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 09/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 11/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 08/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 17/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 09/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 09/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 10/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 13/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 10/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 12/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 09/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 18/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 10/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 10/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 11/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 14/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 11/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 13/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 10/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 19/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 11/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 11/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 12/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 15/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 12/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 14/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 11/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 20/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 12/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 12/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 13/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 16/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 13/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 15/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 12/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 21/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 13/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 13/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 14/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 17/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 14/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 16/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 13/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 22/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 14/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 14/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 15/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 18/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 15/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 17/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 14/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 23/0 : 6[6] -> 7[7] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 15/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 15/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 16/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 19/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 16/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 18/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 15/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 16/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 16/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 17/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 20/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 17/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 19/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 16/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 17/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 17/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 18/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 21/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 18/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 20/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 17/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 18/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 18/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 19/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 22/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 19/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 21/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 18/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 19/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 19/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 20/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 23/0 : 2[2] -> 3[3] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 20/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 22/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 19/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 20/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 20/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 21/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 21/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 23/0 : 1[1] -> 2[2] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 20/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 21/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 21/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 22/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 22/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 21/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 22/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 22/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 23/0 : 5[5] -> 6[6] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 23/0 : 7[7] -> 0[0] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 22/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 23/0 : 4[4] -> 5[5] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 23/0 : 3[3] -> 4[4] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Channel 23/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Connected all rings
+worker0:157179:158263 [1] NCCL INFO Connected all rings
+worker0:157178:158261 [0] NCCL INFO Connected all rings
+worker0:157182:158264 [3] NCCL INFO Connected all rings
+worker0:157183:158266 [4] NCCL INFO Connected all rings
+worker0:157182:158264 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 02/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Connected all rings
+worker0:157185:158267 [6] NCCL INFO Connected all rings
+worker0:157186:158265 [7] NCCL INFO Connected all rings
+worker0:157182:158264 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 00/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 00/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 04/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 04/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 01/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 01/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 05/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 05/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 02/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 03/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 00/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 04/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 00/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 02/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 06/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 06/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 04/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 01/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 01/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 03/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 07/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 07/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 05/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 02/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 06/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 02/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 04/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 08/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 08/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 06/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 03/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 07/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 03/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 05/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 09/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 09/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 07/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 04/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 08/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 04/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 06/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 10/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 10/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 08/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 05/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 09/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 05/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 07/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 11/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 11/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 09/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 06/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 10/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 06/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 08/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 12/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 12/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 10/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 07/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 11/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 07/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 09/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 13/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 13/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 11/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 08/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 12/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 08/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 10/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 14/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 14/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 12/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 09/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 13/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 09/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 11/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 15/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 15/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 13/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 10/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 14/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 10/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 12/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 16/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 16/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 14/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 11/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 15/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 11/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 13/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 17/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 17/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 15/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 12/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 16/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 12/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 14/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 18/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 18/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 16/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 13/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 17/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 13/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 15/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 19/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 19/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 17/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 14/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 18/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 14/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 16/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 20/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 20/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 18/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 15/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 19/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 15/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 17/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 21/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 21/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 19/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 16/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 20/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 16/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 18/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 22/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 22/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 20/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 17/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 21/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 17/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 19/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157182:158264 [3] NCCL INFO Channel 23/0 : 3[3] -> 2[2] via P2P/CUMEM
+worker0:157181:158269 [2] NCCL INFO Channel 23/0 : 2[2] -> 1[1] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 21/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 18/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 22/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 18/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 20/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 22/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 19/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157179:158263 [1] NCCL INFO Channel 23/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 19/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 21/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157183:158266 [4] NCCL INFO Channel 23/0 : 4[4] -> 3[3] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 20/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 20/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 22/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 21/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 21/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157186:158265 [7] NCCL INFO Channel 23/0 : 7[7] -> 6[6] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 22/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 22/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157185:158267 [6] NCCL INFO Channel 23/0 : 6[6] -> 5[5] via P2P/CUMEM
+worker0:157184:158268 [5] NCCL INFO Channel 23/0 : 5[5] -> 4[4] via P2P/CUMEM
+worker0:157178:158261 [0] NCCL INFO Connected all trees
+worker0:157178:158261 [0] NCCL INFO NVLS comm 0x22eca450 headRank 0 nHeads 8 buffSize 1048576 memSize 2097152 nvlsPerRankSize 150994944 nvlsTotalSize 1207959552
+worker0:157179:158263 [1] NCCL INFO Connected all trees
+worker0:157181:158269 [2] NCCL INFO Connected all trees
+worker0:157182:158264 [3] NCCL INFO Connected all trees
+worker0:157179:158263 [1] NCCL INFO NVLS comm 0x3e2f1640 headRank 1 nHeads 8 buffSize 1048576 memSize 2097152 nvlsPerRankSize 150994944 nvlsTotalSize 1207959552
+worker0:157181:158269 [2] NCCL INFO NVLS comm 0x29b8a860 headRank 2 nHeads 8 buffSize 1048576 memSize 2097152 nvlsPerRankSize 150994944 nvlsTotalSize 1207959552
+worker0:157183:158266 [4] NCCL INFO Connected all trees
+worker0:157186:158265 [7] NCCL INFO Connected all trees
+worker0:157185:158267 [6] NCCL INFO Connected all trees
+worker0:157184:158268 [5] NCCL INFO Connected all trees
+worker0:157182:158264 [3] NCCL INFO NVLS comm 0x2e177f90 headRank 3 nHeads 8 buffSize 1048576 memSize 2097152 nvlsPerRankSize 150994944 nvlsTotalSize 1207959552
+worker0:157184:158268 [5] NCCL INFO NVLS comm 0x433411d0 headRank 5 nHeads 8 buffSize 1048576 memSize 2097152 nvlsPerRankSize 150994944 nvlsTotalSize 1207959552
+worker0:157186:158265 [7] NCCL INFO NVLS comm 0x13b829e0 headRank 7 nHeads 8 buffSize 1048576 memSize 2097152 nvlsPerRankSize 150994944 nvlsTotalSize 1207959552
+worker0:157185:158267 [6] NCCL INFO NVLS comm 0x142b80f0 headRank 6 nHeads 8 buffSize 1048576 memSize 2097152 nvlsPerRankSize 150994944 nvlsTotalSize 1207959552
+worker0:157183:158266 [4] NCCL INFO NVLS comm 0x49ebf770 headRank 4 nHeads 8 buffSize 1048576 memSize 2097152 nvlsPerRankSize 150994944 nvlsTotalSize 1207959552
+worker0:157179:158263 [1] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+worker0:157179:158263 [1] NCCL INFO 24 coll channels, 24 collnet channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+worker0:157184:158268 [5] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+worker0:157184:158268 [5] NCCL INFO 24 coll channels, 24 collnet channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+worker0:157178:158261 [0] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+worker0:157178:158261 [0] NCCL INFO 24 coll channels, 24 collnet channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+worker0:157183:158266 [4] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+worker0:157183:158266 [4] NCCL INFO 24 coll channels, 24 collnet channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+worker0:157186:158265 [7] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+worker0:157186:158265 [7] NCCL INFO 24 coll channels, 24 collnet channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+worker0:157182:158264 [3] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+worker0:157182:158264 [3] NCCL INFO 24 coll channels, 24 collnet channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+worker0:157181:158269 [2] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+worker0:157181:158269 [2] NCCL INFO 24 coll channels, 24 collnet channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+worker0:157185:158267 [6] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 512 | 512
+worker0:157185:158267 [6] NCCL INFO 24 coll channels, 24 collnet channels, 16 nvls channels, 32 p2p channels, 32 p2p channels per peer
+worker0:157178:158261 [0] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker0:157178:158261 [0] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker0:157178:158261 [0] NCCL INFO ncclCommInitRank comm 0x22eca450 rank 0 nranks 8 cudaDev 0 nvmlDev 0 busId 8d000 commId 0xb9ec1e31b042475e - Init COMPLETE
+worker0:157183:158266 [4] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker0:157183:158266 [4] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker0:157186:158265 [7] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker0:157186:158265 [7] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker0:157179:158263 [1] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker0:157179:158263 [1] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker0:157181:158269 [2] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker0:157181:158269 [2] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker0:157183:158266 [4] NCCL INFO ncclCommInitRank comm 0x49ebf770 rank 4 nranks 8 cudaDev 4 nvmlDev 4 busId ab000 commId 0xb9ec1e31b042475e - Init COMPLETE
+worker0:157184:158268 [5] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker0:157184:158268 [5] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker0:157182:158264 [3] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker0:157182:158264 [3] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker0:157185:158267 [6] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker0:157185:158267 [6] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker0:157186:158265 [7] NCCL INFO ncclCommInitRank comm 0x13b829e0 rank 7 nranks 8 cudaDev 7 nvmlDev 7 busId b7000 commId 0xb9ec1e31b042475e - Init COMPLETE
+worker0:157179:158263 [1] NCCL INFO ncclCommInitRank comm 0x3e2f1640 rank 1 nranks 8 cudaDev 1 nvmlDev 1 busId 91000 commId 0xb9ec1e31b042475e - Init COMPLETE
+worker0:157181:158269 [2] NCCL INFO ncclCommInitRank comm 0x29b8a860 rank 2 nranks 8 cudaDev 2 nvmlDev 2 busId 95000 commId 0xb9ec1e31b042475e - Init COMPLETE
+worker0:157184:158268 [5] NCCL INFO ncclCommInitRank comm 0x433411d0 rank 5 nranks 8 cudaDev 5 nvmlDev 5 busId af000 commId 0xb9ec1e31b042475e - Init COMPLETE
+worker0:157182:158264 [3] NCCL INFO ncclCommInitRank comm 0x2e177f90 rank 3 nranks 8 cudaDev 3 nvmlDev 3 busId 99000 commId 0xb9ec1e31b042475e - Init COMPLETE
+worker0:157185:158267 [6] NCCL INFO ncclCommInitRank comm 0x142b80f0 rank 6 nranks 8 cudaDev 6 nvmlDev 6 busId b3000 commId 0xb9ec1e31b042475e - Init COMPLETE
+worker0:157178:158350 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+worker0:157183:158342 [4] NCCL INFO [Service thread] Connection closed by localRank 4
+worker0:157179:158338 [1] NCCL INFO [Service thread] Connection closed by localRank 1
+worker0:157181:158344 [2] NCCL INFO [Service thread] Connection closed by localRank 2
+worker0:157186:158346 [7] NCCL INFO [Service thread] Connection closed by localRank 7
+worker0:157182:158348 [3] NCCL INFO [Service thread] Connection closed by localRank 3
+worker0:157185:158336 [6] NCCL INFO [Service thread] Connection closed by localRank 6
+worker0:157184:158340 [5] NCCL INFO [Service thread] Connection closed by localRank 5
+worker0:157178:158430 [0] NCCL INFO comm 0x22eca450 rank 0 nranks 8 cudaDev 0 busId 8d000 - Abort COMPLETE
+worker0:157183:158431 [4] NCCL INFO comm 0x49ebf770 rank 4 nranks 8 cudaDev 4 busId ab000 - Abort COMPLETE
+worker0:157186:158434 [7] NCCL INFO comm 0x13b829e0 rank 7 nranks 8 cudaDev 7 busId b7000 - Abort COMPLETE
+worker0:157179:158433 [1] NCCL INFO comm 0x3e2f1640 rank 1 nranks 8 cudaDev 1 busId 91000 - Abort COMPLETE
+worker0:157181:158435 [2] NCCL INFO comm 0x29b8a860 rank 2 nranks 8 cudaDev 2 busId 95000 - Abort COMPLETE
+worker0:157182:158436 [3] NCCL INFO comm 0x2e177f90 rank 3 nranks 8 cudaDev 3 busId 99000 - Abort COMPLETE
+worker0:157184:158438 [5] NCCL INFO comm 0x433411d0 rank 5 nranks 8 cudaDev 5 busId af000 - Abort COMPLETE
+worker0:157185:158437 [6] NCCL INFO comm 0x142b80f0 rank 6 nranks 8 cudaDev 6 busId b3000 - Abort COMPLETE

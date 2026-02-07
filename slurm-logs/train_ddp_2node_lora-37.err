@@ -1,0 +1,275 @@
++ mkdir -p /mnt/sharedfs/nebius-demoday-test/slurm-logs
++ export NCCL_DEBUG=INFO
++ NCCL_DEBUG=INFO
++ export TORCH_DISTRIBUTED_DEBUG=DETAIL
++ TORCH_DISTRIBUTED_DEBUG=DETAIL
++ export NCCL_IB_DISABLE=1
++ NCCL_IB_DISABLE=1
++ export NCCL_NET=Socket
++ NCCL_NET=Socket
++ export NCCL_SOCKET_IFNAME=eth0
++ NCCL_SOCKET_IFNAME=eth0
++ export GLOO_SOCKET_IFNAME=eth0
++ GLOO_SOCKET_IFNAME=eth0
++ export GLOO_USE_IPV6=0
++ GLOO_USE_IPV6=0
++ export TORCH_NCCL_ASYNC_ERROR_HANDLING=1
++ TORCH_NCCL_ASYNC_ERROR_HANDLING=1
++ export NCCL_SOCKET_NTHREADS=4
++ NCCL_SOCKET_NTHREADS=4
++ export NCCL_NSOCKS_PERTHREAD=2
++ NCCL_NSOCKS_PERTHREAD=2
++ NODES=($(scontrol show hostnames "$SLURM_JOB_NODELIST"))
+++ scontrol show hostnames 'worker[0-1]'
++ HEAD_NODE=worker0
+++ srun --nodes=1 --ntasks=1 -w worker0 bash -lc 'ip -4 -o addr show dev eth0 | awk '\''{print $4}'\'' | cut -d/ -f1'
++ MASTER_ADDR=10.6.22.67
++ MASTER_PORT=29500
++ RDZV_ENDPOINT=10.6.22.67:29500
++ export MASTER_ADDR MASTER_PORT RDZV_ENDPOINT
++ echo 'NODES=worker0 worker1'
++ echo HEAD_NODE=worker0
++ echo MASTER_ADDR=10.6.22.67
++ echo MASTER_PORT=29500
++ echo RDZV_ENDPOINT=10.6.22.67:29500
+++ hostname
++ echo HOST=worker0
++ echo CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
++ echo NCCL_SOCKET_IFNAME=eth0
++ echo GLOO_SOCKET_IFNAME=eth0
++ nvidia-smi -L
++ srun --ntasks=2 --ntasks-per-node=1 bash -lc '
+  set -euo pipefail
+  set -x
+
+  cd /mnt/sharedfs/nebius-demoday-test
+
+  # IMPORTANT: activate env on EACH node
+  source training/env.sh || true
+  source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
+
+  echo "Running on $(hostname) SLURM_NODEID=$SLURM_NODEID"
+  echo "IP: $(hostname -I)"
+  nvidia-smi -L
+
+python - <<'\''PY'\''
+import os, socket
+print("host", socket.gethostname())
+print("MASTER_ADDR", os.environ.get("MASTER_ADDR"))
+print("MASTER_PORT", os.environ.get("MASTER_PORT"))
+print("RDZV_ENDPOINT", os.environ.get("RDZV_ENDPOINT"))
+print("NCCL_IB_DISABLE", os.environ.get("NCCL_IB_DISABLE"))
+print("NCCL_NET", os.environ.get("NCCL_NET"))
+print("NCCL_SOCKET_IFNAME", os.environ.get("NCCL_SOCKET_IFNAME"))
+print("GLOO_SOCKET_IFNAME", os.environ.get("GLOO_SOCKET_IFNAME"))
+PY
+
+  torchrun \
+    --nnodes=$SLURM_JOB_NUM_NODES \
+    --nproc_per_node=8 \
+    --node_rank=$SLURM_NODEID \
+    --rdzv_backend=c10d \
+    --rdzv_id=$SLURM_JOB_ID \
+    --rdzv_endpoint="$RDZV_ENDPOINT" \
+    training/src/train_sft_ddp_lora_multinode.py \
+      --run_name sft_ddp_2node_lora_smoke \
+      --max_steps 10 \
+      --seq_len 512 \
+      --bsz 1 \
+      --grad_accum 1 \
+      --bf16 True \
+      --gradient_checkpointing False \
+      --use_lora \
+      --lora_r 8 \
+      --lora_alpha 16 \
+      --lora_dropout 0.05
+'
++ cd /mnt/sharedfs/nebius-demoday-test
++ source training/env.sh
++ cd /mnt/sharedfs/nebius-demoday-test
++ source training/env.sh
+++ VENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ '[' -d /mnt/sharedfs/nebius-demoday-test/.venv ']'
+++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
++++ deactivate nondestructive
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ hash -r
++++ '[' -n '' ']'
++++ unset VIRTUAL_ENV
++++ unset VIRTUAL_ENV_PROMPT
++++ '[' '!' nondestructive = nondestructive ']'
++++ '[' linux-gnu = cygwin ']'
++++ '[' linux-gnu = msys ']'
++++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ _OLD_VIRTUAL_PATH=/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ export PATH
++++ '[' -n '' ']'
++++ '[' -z '' ']'
++++ _OLD_VIRTUAL_PS1=
++++ PS1='(.venv) '
++++ export PS1
++++ VIRTUAL_ENV_PROMPT='(.venv) '
++++ export VIRTUAL_ENV_PROMPT
++++ hash -r
+++ set -euo pipefail
+++ REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+++ export RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ export HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ mkdir -p /mnt/sharedfs/nebius-demoday-test/results/training /mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ echo REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+++ echo RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ echo HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
+++ deactivate nondestructive
+++ '[' -n /usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin ']'
+++ PATH=/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ unset _OLD_VIRTUAL_PATH
+++ '[' -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ '[' linux-gnu = cygwin ']'
+++ '[' linux-gnu = msys ']'
+++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ _OLD_VIRTUAL_PATH=/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1='(.venv) '
+++ PS1='(.venv) (.venv) '
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(.venv) '
+++ export VIRTUAL_ENV_PROMPT
+++ hash -r
+++ hostname
+++ VENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ '[' -d /mnt/sharedfs/nebius-demoday-test/.venv ']'
+++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
++++ deactivate nondestructive
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ hash -r
++++ '[' -n '' ']'
++++ unset VIRTUAL_ENV
++++ unset VIRTUAL_ENV_PROMPT
++++ '[' '!' nondestructive = nondestructive ']'
++++ '[' linux-gnu = cygwin ']'
++++ '[' linux-gnu = msys ']'
++++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ _OLD_VIRTUAL_PATH=/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ export PATH
++++ '[' -n '' ']'
++++ '[' -z '' ']'
++++ _OLD_VIRTUAL_PS1=
++++ PS1='(.venv) '
++++ export PS1
++++ VIRTUAL_ENV_PROMPT='(.venv) '
++++ export VIRTUAL_ENV_PROMPT
++++ hash -r
+++ set -euo pipefail
+++ REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+++ export RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ export HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ mkdir -p /mnt/sharedfs/nebius-demoday-test/results/training /mnt/sharedfs/nebius-demoday-test/.cache/huggingface
++ echo 'Running on worker1 SLURM_NODEID=1'
+++ echo REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+++ echo RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ echo HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ hostname -I
++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
+++ deactivate nondestructive
++ echo 'IP: 10.6.0.108 172.17.0.1 '
++ nvidia-smi -L
+++ '[' -n /usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin ']'
+++ PATH=/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ unset _OLD_VIRTUAL_PATH
+++ '[' -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ '[' linux-gnu = cygwin ']'
+++ '[' linux-gnu = msys ']'
+++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ _OLD_VIRTUAL_PATH=/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1='(.venv) '
+++ PS1='(.venv) (.venv) '
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(.venv) '
+++ export VIRTUAL_ENV_PROMPT
+++ hash -r
+++ hostname
++ echo 'Running on worker0 SLURM_NODEID=0'
+++ hostname -I
++ echo 'IP: 10.6.22.67 172.17.0.1 '
++ nvidia-smi -L
++ python -
++ python -
++ torchrun --nnodes=2 --nproc_per_node=8 --node_rank=0 --rdzv_backend=c10d --rdzv_id=37 --rdzv_endpoint=10.6.22.67:29500 training/src/train_sft_ddp_lora_multinode.py --run_name sft_ddp_2node_lora_smoke --max_steps 10 --seq_len 512 --bsz 1 --grad_accum 1 --bf16 True --gradient_checkpointing False --use_lora --lora_r 8 --lora_alpha 16 --lora_dropout 0.05
++ torchrun --nnodes=2 --nproc_per_node=8 --node_rank=1 --rdzv_backend=c10d --rdzv_id=37 --rdzv_endpoint=10.6.22.67:29500 training/src/train_sft_ddp_lora_multinode.py --run_name sft_ddp_2node_lora_smoke --max_steps 10 --seq_len 512 --bsz 1 --grad_accum 1 --bf16 True --gradient_checkpointing False --use_lora --lora_r 8 --lora_alpha 16 --lora_dropout 0.05
+W0125 06:01:52.902000 201039 torch/distributed/run.py:793] 
+W0125 06:01:52.902000 201039 torch/distributed/run.py:793] *****************************************
+W0125 06:01:52.902000 201039 torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0125 06:01:52.902000 201039 torch/distributed/run.py:793] *****************************************
+W0125 06:01:52.977000 193470 torch/distributed/run.py:793] 
+W0125 06:01:52.977000 193470 torch/distributed/run.py:793] *****************************************
+W0125 06:01:52.977000 193470 torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0125 06:01:52.977000 193470 torch/distributed/run.py:793] *****************************************
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 26.02it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 18.31it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 22.95it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 16.29it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 20.02it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 18.28it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 16.27it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 14.70it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 14.67it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 41.66it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 41.07it/s]
+
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 43.02it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 41.18it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 41.09it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 37.38it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  2.82it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  2.82it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  3.00it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  2.99it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.51s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.31it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.46s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.36it/s]
+tokenizing:   0%|          | 0/2048 [00:00<?, ? examples/s]tokenizing:  15%|█▌        | 308/2048 [00:00<00:00, 3056.22 examples/s]tokenizing:  31%|███       | 639/2048 [00:00<00:00, 3193.69 examples/s]tokenizing:  49%|████▉     | 1000/2048 [00:00<00:00, 1970.45 examples/s]tokenizing:  66%|██████▌   | 1348/2048 [00:00<00:00, 2383.12 examples/s]tokenizing:  80%|████████  | 1648/2048 [00:00<00:00, 2554.66 examples/s]tokenizing:  96%|█████████▌| 1959/2048 [00:00<00:00, 2706.14 examples/s]tokenizing: 100%|██████████| 2048/2048 [00:00<00:00, 2203.82 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/2048 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 2048/2048 [00:00<00:00, 47791.69 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 2048/2048 [00:00<00:00, 47665.98 examples/s]
+[rank8]:[W125 06:02:39.454794711 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank10]:[W125 06:02:39.458656930 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank13]:[W125 06:02:39.459531803 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank15]:[W125 06:02:39.463955490 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+  0%|          | 0/10 [00:00<?, ?it/s][rank1]:[W125 06:02:39.418044617 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank3]:[W125 06:02:39.419645486 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank5]:[W125 06:02:39.420850145 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank12]:[W125 06:02:39.469636378 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank6]:[W125 06:02:39.422726271 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank11]:[W125 06:02:39.470783783 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank7]:[W125 06:02:39.423805002 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank2]:[W125 06:02:39.425045235 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank4]:[W125 06:02:39.426358329 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank14]:[W125 06:02:39.473987421 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank9]:[W125 06:02:39.475713406 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank0]:[W125 06:02:39.430779193 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+ 10%|█         | 1/10 [00:00<00:07,  1.20it/s]                                               10%|█         | 1/10 [00:00<00:07,  1.20it/s] 20%|██        | 2/10 [00:01<00:04,  1.91it/s]                                               20%|██        | 2/10 [00:01<00:04,  1.91it/s] 30%|███       | 3/10 [00:01<00:02,  2.49it/s]                                               30%|███       | 3/10 [00:01<00:02,  2.49it/s] 40%|████      | 4/10 [00:01<00:02,  2.91it/s]                                               40%|████      | 4/10 [00:01<00:02,  2.91it/s] 50%|█████     | 5/10 [00:02<00:01,  2.83it/s]                                               50%|█████     | 5/10 [00:02<00:01,  2.83it/s] 60%|██████    | 6/10 [00:02<00:01,  3.08it/s]                                               60%|██████    | 6/10 [00:02<00:01,  3.08it/s] 70%|███████   | 7/10 [00:02<00:00,  3.28it/s]                                               70%|███████   | 7/10 [00:02<00:00,  3.28it/s] 80%|████████  | 8/10 [00:02<00:00,  3.45it/s]                                               80%|████████  | 8/10 [00:02<00:00,  3.45it/s] 90%|█████████ | 9/10 [00:03<00:00,  3.59it/s]                                               90%|█████████ | 9/10 [00:03<00:00,  3.59it/s]100%|██████████| 10/10 [00:03<00:00,  3.65it/s]                                               100%|██████████| 10/10 [00:03<00:00,  3.65it/s]                                               100%|██████████| 10/10 [00:06<00:00,  3.65it/s]100%|██████████| 10/10 [00:06<00:00,  1.55it/s]
+[rank0]:[W125 06:02:45.765972596 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+[rank8]:[W125 06:02:45.873646842 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())

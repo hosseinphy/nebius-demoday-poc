@@ -1,0 +1,77 @@
++ mkdir -p /mnt/sharedfs/nebius-demoday-test/slurm-logs
++ source training/env.sh
+++ VENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ '[' -d /mnt/sharedfs/nebius-demoday-test/.venv ']'
+++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
++++ deactivate nondestructive
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ hash -r
++++ '[' -n '' ']'
++++ unset VIRTUAL_ENV
++++ unset VIRTUAL_ENV_PROMPT
++++ '[' '!' nondestructive = nondestructive ']'
++++ '[' linux-gnu = cygwin ']'
++++ '[' linux-gnu = msys ']'
++++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ _OLD_VIRTUAL_PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ export PATH
++++ '[' -n '' ']'
++++ '[' -z '' ']'
++++ _OLD_VIRTUAL_PS1=
++++ PS1='(.venv) '
++++ export PS1
++++ VIRTUAL_ENV_PROMPT='(.venv) '
++++ export VIRTUAL_ENV_PROMPT
++++ hash -r
+++ set -euo pipefail
+++ REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+++ export RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ export HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ mkdir -p /mnt/sharedfs/nebius-demoday-test/results/training /mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ echo REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+++ echo RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ echo HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
++ VENV=/mnt/sharedfs/nebius-demoday-test/.venv
++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
+++ deactivate nondestructive
+++ '[' -n /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin ']'
+++ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ unset _OLD_VIRTUAL_PATH
+++ '[' -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ '[' linux-gnu = cygwin ']'
+++ '[' linux-gnu = msys ']'
+++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ _OLD_VIRTUAL_PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1='(.venv) '
+++ PS1='(.venv) (.venv) '
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(.venv) '
+++ export VIRTUAL_ENV_PROMPT
+++ hash -r
++ hostname
++ pwd
++ which python
++ python -V
++ python training/src/train_sft_min.py --run_name sft_1gpu_smoke --max_steps 10 --seq_len 512
+`torch_dtype` is deprecated! Use `dtype` instead!
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files:  50%|█████     | 1/2 [00:24<00:24, 24.63s/it]Fetching 2 files: 100%|██████████| 2/2 [00:24<00:00, 12.32s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.11it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.65it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.54it/s]
+Generating train split:   0%|          | 0/51760 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 51760/51760 [00:00<00:00, 102813.20 examples/s]Generating train split: 100%|██████████| 51760/51760 [00:00<00:00, 101908.15 examples/s]
+Map:   0%|          | 0/2048 [00:00<?, ? examples/s]Map:  15%|█▌        | 317/2048 [00:00<00:00, 3135.77 examples/s]Map:  31%|███▏      | 645/2048 [00:00<00:00, 3216.53 examples/s]Map:  49%|████▉     | 1000/2048 [00:00<00:00, 2066.24 examples/s]Map:  66%|██████▌   | 1349/2048 [00:00<00:00, 2468.62 examples/s]Map:  81%|████████  | 1652/2048 [00:00<00:00, 2629.25 examples/s]Map:  96%|█████████▌| 1959/2048 [00:00<00:00, 2755.13 examples/s]Map: 100%|██████████| 2048/2048 [00:00<00:00, 2258.91 examples/s]
+  0%|          | 0/10 [00:00<?, ?it/s] 10%|█         | 1/10 [00:01<00:09,  1.03s/it]                                               10%|█         | 1/10 [00:01<00:09,  1.03s/it] 20%|██        | 2/10 [00:01<00:05,  1.43it/s]                                               20%|██        | 2/10 [00:01<00:05,  1.43it/s] 30%|███       | 3/10 [00:01<00:04,  1.69it/s]                                               30%|███       | 3/10 [00:01<00:04,  1.69it/s] 40%|████      | 4/10 [00:02<00:03,  1.85it/s]                                               40%|████      | 4/10 [00:02<00:03,  1.85it/s] 50%|█████     | 5/10 [00:02<00:02,  1.94it/s]                                               50%|█████     | 5/10 [00:02<00:02,  1.94it/s] 60%|██████    | 6/10 [00:03<00:01,  2.00it/s]                                               60%|██████    | 6/10 [00:03<00:01,  2.00it/s] 70%|███████   | 7/10 [00:03<00:01,  2.05it/s]                                               70%|███████   | 7/10 [00:03<00:01,  2.05it/s] 80%|████████  | 8/10 [00:04<00:00,  2.08it/s]                                               80%|████████  | 8/10 [00:04<00:00,  2.08it/s] 90%|█████████ | 9/10 [00:04<00:00,  2.09it/s]                                               90%|█████████ | 9/10 [00:04<00:00,  2.09it/s]100%|██████████| 10/10 [00:05<00:00,  2.10it/s]                                               100%|██████████| 10/10 [00:05<00:00,  2.10it/s]                                               100%|██████████| 10/10 [02:19<00:00,  2.10it/s]100%|██████████| 10/10 [02:19<00:00, 13.92s/it]

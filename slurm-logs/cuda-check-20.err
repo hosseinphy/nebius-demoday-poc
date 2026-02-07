@@ -1,0 +1,73 @@
++ mkdir -p /mnt/sharedfs/nebius-demoday-test/slurm-logs
++ source training/env.sh
+++ VENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ '[' -d /mnt/sharedfs/nebius-demoday-test/.venv ']'
+++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
++++ deactivate nondestructive
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ hash -r
++++ '[' -n '' ']'
++++ unset VIRTUAL_ENV
++++ unset VIRTUAL_ENV_PROMPT
++++ '[' '!' nondestructive = nondestructive ']'
++++ '[' linux-gnu = cygwin ']'
++++ '[' linux-gnu = msys ']'
++++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ _OLD_VIRTUAL_PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ export PATH
++++ '[' -n '' ']'
++++ '[' -z '' ']'
++++ _OLD_VIRTUAL_PS1=
++++ PS1='(.venv) '
++++ export PS1
++++ VIRTUAL_ENV_PROMPT='(.venv) '
++++ export VIRTUAL_ENV_PROMPT
++++ hash -r
+++ set -euo pipefail
+++ REPO_ROOT=/mnt/shared/ubuntu/nebius-demoday
+++ export RUNS_ROOT=/mnt/shared/ubuntu/nebius-demoday/results/training
+++ RUNS_ROOT=/mnt/shared/ubuntu/nebius-demoday/results/training
+++ export HF_HOME=/mnt/shared/ubuntu/nebius-demoday/.cache/huggingface
+++ HF_HOME=/mnt/shared/ubuntu/nebius-demoday/.cache/huggingface
+++ mkdir -p /mnt/shared/ubuntu/nebius-demoday/results/training /mnt/shared/ubuntu/nebius-demoday/.cache/huggingface
+mkdir: cannot create directory ‘/mnt/shared’: Permission denied
+mkdir: cannot create directory ‘/mnt/shared’: Permission denied
+++ echo REPO_ROOT=/mnt/shared/ubuntu/nebius-demoday
+++ echo RUNS_ROOT=/mnt/shared/ubuntu/nebius-demoday/results/training
+++ echo HF_HOME=/mnt/shared/ubuntu/nebius-demoday/.cache/huggingface
++ VENV=/mnt/sharedfs/nebius-demoday-test/.venv
++ '[' -d /mnt/sharedfs/nebius-demoday-test/.venv ']'
++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
+++ deactivate nondestructive
+++ '[' -n /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin ']'
+++ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ unset _OLD_VIRTUAL_PATH
+++ '[' -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ '[' linux-gnu = cygwin ']'
+++ '[' linux-gnu = msys ']'
+++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ _OLD_VIRTUAL_PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1='(.venv) '
+++ PS1='(.venv) (.venv) '
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(.venv) '
+++ export VIRTUAL_ENV_PROMPT
+++ hash -r
++ hostname
++ pwd
++ nvidia-smi
++ python -

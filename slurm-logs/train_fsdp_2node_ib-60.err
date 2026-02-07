@@ -1,0 +1,159 @@
+[rank5]:[W126 00:09:17.089245354 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 5]  using GPU 5 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank6]:[W126 00:09:17.089310783 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 6]  using GPU 6 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank4]:[W126 00:09:17.089351342 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 4]  using GPU 4 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank11]:[W126 00:09:17.136418445 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 11]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank10]:[W126 00:09:17.136464029 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 10]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank3]:[W126 00:09:17.089443946 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 3]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank9]:[W126 00:09:17.136513287 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 9]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank2]:[W126 00:09:17.089542562 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 2]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank12]:[W126 00:09:17.136562919 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 12]  using GPU 4 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank7]:[W126 00:09:17.089570602 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 7]  using GPU 7 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank13]:[W126 00:09:17.136629020 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 13]  using GPU 5 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank1]:[W126 00:09:17.089730094 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank8]:[W126 00:09:17.136652293 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 8]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank0]:[W126 00:09:17.089875895 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank14]:[W126 00:09:17.136744068 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 14]  using GPU 6 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank15]:[W126 00:09:17.136930510 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 15]  using GPU 7 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+[rank8]: Traceback (most recent call last):
+[rank8]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_fsdp_multinode_ib.py", line 296, in <module>
+[rank8]:     main()
+[rank8]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_fsdp_multinode_ib.py", line 191, in main
+[rank8]:     barrier()
+[rank8]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_fsdp_multinode_ib.py", line 62, in barrier
+[rank8]:     dist.barrier()
+[rank8]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py", line 83, in wrapper
+[rank8]:     return func(*args, **kwargs)
+[rank8]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank8]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 4159, in barrier
+[rank8]:     work = group.barrier(opts=opts)
+[rank8]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank8]: torch.distributed.DistBackendError: NCCL error in: ../torch/csrc/distributed/c10d/NCCLUtils.hpp:317, internal error - please report this issue to the NCCL developers, NCCL version 2.21.5
+[rank8]: ncclInternalError: Internal check failed.
+[rank8]: Last error:
+[rank8]: socketFinalizeAccept: wrong type 4 != 3
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_fsdp_multinode_ib.py", line 296, in <module>
+[rank0]:     main()
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_fsdp_multinode_ib.py", line 191, in main
+[rank0]:     barrier()
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_fsdp_multinode_ib.py", line 62, in barrier
+[rank0]:     dist.barrier()
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py", line 83, in wrapper
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 4159, in barrier
+[rank0]:     work = group.barrier(opts=opts)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: torch.distributed.DistBackendError: NCCL error in: ../torch/csrc/distributed/c10d/NCCLUtils.hpp:317, internal error - please report this issue to the NCCL developers, NCCL version 2.21.5
+[rank0]: ncclInternalError: Internal check failed.
+[rank0]: Last error:
+[rank0]: socketFinalizeAccept: wrong type 3 != 4
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_fsdp_multinode_ib.py", line 296, in <module>
+[rank1]:     main()
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_fsdp_multinode_ib.py", line 191, in main
+[rank1]:     barrier()
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/training/src/train_sft_fsdp_multinode_ib.py", line 62, in barrier
+[rank1]:     dist.barrier()
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/c10d_logger.py", line 83, in wrapper
+[rank1]:     return func(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py", line 4159, in barrier
+[rank1]:     work = group.barrier(opts=opts)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]: torch.distributed.DistBackendError: NCCL error in: ../torch/csrc/distributed/c10d/NCCLUtils.hpp:317, remote process exited or there was a network error, NCCL version 2.21.5
+[rank1]: ncclRemoteError: A call failed possibly due to a network error or a remote process exiting prematurely.
+[rank1]: Last error:
+[rank1]: socketProgressOpt: Call to recv from 10.6.0.108<41543> failed : Connection reset by peer
+[rank8]:[W126 00:09:19.714356981 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+[rank0]:[W126 00:09:19.647589426 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+W0126 00:09:20.150000 337849 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 337862 closing signal SIGTERM
+W0126 00:09:20.151000 337849 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 337863 closing signal SIGTERM
+W0126 00:09:20.152000 337849 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 337864 closing signal SIGTERM
+W0126 00:09:20.152000 337849 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 337865 closing signal SIGTERM
+W0126 00:09:20.153000 337849 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 337866 closing signal SIGTERM
+W0126 00:09:20.153000 337849 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 337867 closing signal SIGTERM
+W0126 00:09:20.153000 337849 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 337868 closing signal SIGTERM
+W0126 00:09:20.165000 326422 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 326433 closing signal SIGTERM
+W0126 00:09:20.167000 326422 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 326434 closing signal SIGTERM
+W0126 00:09:20.167000 326422 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 326435 closing signal SIGTERM
+W0126 00:09:20.168000 326422 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 326436 closing signal SIGTERM
+W0126 00:09:20.168000 326422 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 326437 closing signal SIGTERM
+W0126 00:09:20.168000 326422 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 326438 closing signal SIGTERM
+W0126 00:09:20.168000 326422 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 326439 closing signal SIGTERM
+E0126 00:09:21.061000 326422 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 326432) of binary: /mnt/sharedfs/nebius-demoday-test/.venv/bin/python
+E0126 00:09:21.064000 337849 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 337861) of binary: /mnt/sharedfs/nebius-demoday-test/.venv/bin/python
+Traceback (most recent call last):
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/bin/torchrun", line 7, in <module>
+Traceback (most recent call last):
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/bin/torchrun", line 7, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    sys.exit(main())
+             ^^^^^^
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/run.py", line 919, in main
+           ^^^^^^^^^^^^^^^^^^
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/run.py", line 919, in main
+    run(args)
+    run(args)
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/run.py", line 910, in run
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/run.py", line 910, in run
+    elastic_launch(
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    elastic_launch(
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    return launch_agent(self._config, self._entrypoint, list(args))
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+src/train_sft_fsdp_multinode_ib.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-01-26_00:09:20
+  host      : worker1
+  rank      : 8 (local_rank: 0)
+  exitcode  : 1 (pid: 326432)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/sharedfs/nebius-demoday-test/.venv/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+src/train_sft_fsdp_multinode_ib.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-01-26_00:09:20
+  host      : worker0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 337861)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: worker0: task 0: Exited with exit code 1
+srun: error: worker1: task 1: Exited with exit code 1

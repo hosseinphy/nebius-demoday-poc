@@ -1,0 +1,264 @@
++ mkdir -p /mnt/sharedfs/nebius-demoday-test/slurm-logs
++ export NCCL_DEBUG=INFO
++ NCCL_DEBUG=INFO
++ export TORCH_DISTRIBUTED_DEBUG=DETAIL
++ TORCH_DISTRIBUTED_DEBUG=DETAIL
++ export NCCL_IB_DISABLE=1
++ NCCL_IB_DISABLE=1
++ export NCCL_NET=Socket
++ NCCL_NET=Socket
++ export NCCL_SOCKET_IFNAME=eth0
++ NCCL_SOCKET_IFNAME=eth0
++ export GLOO_SOCKET_IFNAME=eth0
++ GLOO_SOCKET_IFNAME=eth0
++ export GLOO_USE_IPV6=0
++ GLOO_USE_IPV6=0
++ export TORCH_NCCL_ASYNC_ERROR_HANDLING=1
++ TORCH_NCCL_ASYNC_ERROR_HANDLING=1
++ export NCCL_SOCKET_NTHREADS=4
++ NCCL_SOCKET_NTHREADS=4
++ export NCCL_NSOCKS_PERTHREAD=2
++ NCCL_NSOCKS_PERTHREAD=2
++ export HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
++ HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
++ mkdir -p /mnt/sharedfs/nebius-demoday-test/.cache/huggingface
++ NODES=($(scontrol show hostnames "$SLURM_JOB_NODELIST"))
+++ scontrol show hostnames 'worker[0-1]'
++ HEAD_NODE=worker0
+++ srun --nodes=1 --ntasks=1 -w worker0 bash -lc 'ip -4 -o addr show dev eth0 | awk '\''{print $4}'\'' | cut -d/ -f1'
++ MASTER_ADDR=10.6.22.67
++ MASTER_PORT=29500
++ RDZV_ENDPOINT=10.6.22.67:29500
++ export MASTER_ADDR MASTER_PORT RDZV_ENDPOINT
++ echo 'NODES=worker0 worker1'
++ echo HEAD_NODE=worker0
++ echo RDZV_ENDPOINT=10.6.22.67:29500
++ nvidia-smi -L
++ srun --ntasks=2 --ntasks-per-node=1 bash -lc '
+  set -euo pipefail
+  set -x
+
+  cd /mnt/sharedfs/nebius-demoday-test
+  source training/env.sh || true
+  source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
+
+  echo "Running on $(hostname) SLURM_NODEID=$SLURM_NODEID"
+  echo "IP: $(hostname -I)"
+  nvidia-smi -L
+
+  torchrun \
+    --nnodes=$SLURM_JOB_NUM_NODES \
+    --nproc_per_node=8 \
+    --node_rank=$SLURM_NODEID \
+    --rdzv_backend=c10d \
+    --rdzv_id=$SLURM_JOB_ID \
+    --rdzv_endpoint="$RDZV_ENDPOINT" \
+    training/src/train_sft_fsdp_multinode.py \
+      --run_name sft_fsdp_2node_smoke \
+      --max_steps 10 \
+      --seq_len 512 \
+      --bsz 1 \
+      --grad_accum 1 \
+      --bf16 True
+'
++ cd /mnt/sharedfs/nebius-demoday-test
++ source training/env.sh
++ cd /mnt/sharedfs/nebius-demoday-test
++ source training/env.sh
+++ VENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ '[' -d /mnt/sharedfs/nebius-demoday-test/.venv ']'
+++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
++++ deactivate nondestructive
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ hash -r
++++ '[' -n '' ']'
++++ unset VIRTUAL_ENV
++++ unset VIRTUAL_ENV_PROMPT
++++ '[' '!' nondestructive = nondestructive ']'
++++ '[' linux-gnu = cygwin ']'
++++ '[' linux-gnu = msys ']'
++++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ _OLD_VIRTUAL_PATH=/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ export PATH
++++ '[' -n '' ']'
++++ '[' -z '' ']'
++++ _OLD_VIRTUAL_PS1=
++++ PS1='(.venv) '
++++ export PS1
++++ VIRTUAL_ENV_PROMPT='(.venv) '
+++ VENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ '[' -d /mnt/sharedfs/nebius-demoday-test/.venv ']'
++++ export VIRTUAL_ENV_PROMPT
+++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
++++ hash -r
++++ deactivate nondestructive
+++ set -euo pipefail
+++ REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
++++ '[' -n '' ']'
+++ export RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ export HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
++++ '[' -n '' ']'
+++ mkdir -p /mnt/sharedfs/nebius-demoday-test/results/training /mnt/sharedfs/nebius-demoday-test/.cache/huggingface
++++ hash -r
++++ '[' -n '' ']'
++++ unset VIRTUAL_ENV
++++ unset VIRTUAL_ENV_PROMPT
+++ echo REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+++ echo RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ echo HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
++++ '[' '!' nondestructive = nondestructive ']'
++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
++++ '[' linux-gnu = cygwin ']'
++++ '[' linux-gnu = msys ']'
+++ deactivate nondestructive
++++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ '[' -n /usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin ']'
++++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ PATH=/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ _OLD_VIRTUAL_PATH=/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
++++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ unset _OLD_VIRTUAL_PATH
++++ export PATH
+++ '[' -n '' ']'
+++ hash -r
++++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
++++ '[' -z '' ']'
++++ _OLD_VIRTUAL_PS1=
+++ '[' '!' nondestructive = nondestructive ']'
++++ PS1='(.venv) '
+++ '[' linux-gnu = cygwin ']'
+++ '[' linux-gnu = msys ']'
+++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ export PS1
+++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
++++ VIRTUAL_ENV_PROMPT='(.venv) '
+++ _OLD_VIRTUAL_PATH=/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++++ export VIRTUAL_ENV_PROMPT
+++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
++++ hash -r
+++ '[' -n '' ']'
+++ set -euo pipefail
+++ REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+++ '[' -z '' ']'
+++ export RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ _OLD_VIRTUAL_PS1='(.venv) '
+++ RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ PS1='(.venv) (.venv) '
+++ export HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(.venv) '
+++ HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ export VIRTUAL_ENV_PROMPT
+++ mkdir -p /mnt/sharedfs/nebius-demoday-test/results/training /mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+++ hash -r
+++ hostname
+++ echo REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+++ echo RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+++ echo HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
++ source /mnt/sharedfs/nebius-demoday-test/.venv/bin/activate
+++ deactivate nondestructive
+++ '[' -n /usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin ']'
+++ PATH=/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ unset _OLD_VIRTUAL_PATH
+++ '[' -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ '[' linux-gnu = cygwin ']'
+++ '[' linux-gnu = msys ']'
+++ export VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ VIRTUAL_ENV=/mnt/sharedfs/nebius-demoday-test/.venv
+++ _OLD_VIRTUAL_PATH=/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ PATH=/mnt/sharedfs/nebius-demoday-test/.venv/bin:/usr/mpi/gcc/openmpi-4.1.7rc1/bin:/usr/local/cuda-12.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1='(.venv) '
+++ PS1='(.venv) (.venv) '
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(.venv) '
+++ export VIRTUAL_ENV_PROMPT
+++ hash -r
+++ hostname
++ echo 'Running on worker1 SLURM_NODEID=1'
++ echo 'Running on worker0 SLURM_NODEID=0'
+++ hostname -I
+++ hostname -I
++ echo 'IP: 10.6.0.108 172.17.0.1 '
++ nvidia-smi -L
++ echo 'IP: 10.6.22.67 172.17.0.1 '
++ nvidia-smi -L
++ torchrun --nnodes=2 --nproc_per_node=8 --node_rank=0 --rdzv_backend=c10d --rdzv_id=39 --rdzv_endpoint=10.6.22.67:29500 training/src/train_sft_fsdp_multinode.py --run_name sft_fsdp_2node_smoke --max_steps 10 --seq_len 512 --bsz 1 --grad_accum 1 --bf16 True
++ torchrun --nnodes=2 --nproc_per_node=8 --node_rank=1 --rdzv_backend=c10d --rdzv_id=39 --rdzv_endpoint=10.6.22.67:29500 training/src/train_sft_fsdp_multinode.py --run_name sft_fsdp_2node_smoke --max_steps 10 --seq_len 512 --bsz 1 --grad_accum 1 --bf16 True
+W0125 15:56:06.789000 272861 torch/distributed/run.py:793] 
+W0125 15:56:06.789000 272861 torch/distributed/run.py:793] *****************************************
+W0125 15:56:06.789000 272861 torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0125 15:56:06.789000 272861 torch/distributed/run.py:793] *****************************************
+W0125 15:56:06.896000 264710 torch/distributed/run.py:793] 
+W0125 15:56:06.896000 264710 torch/distributed/run.py:793] *****************************************
+W0125 15:56:06.896000 264710 torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0125 15:56:06.896000 264710 torch/distributed/run.py:793] *****************************************
+Saving the dataset (0/1 shards):   0%|          | 0/2048 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 2048/2048 [00:00<00:00, 40390.72 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 2048/2048 [00:00<00:00, 40291.63 examples/s]
+[rank5]:[W125 15:56:33.453229983 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 5]  using GPU 5 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank6]:[W125 15:56:33.453315877 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 6]  using GPU 6 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank4]:[W125 15:56:33.453338855 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 4]  using GPU 4 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank10]:[W125 15:56:33.500453708 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 10]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank7]:[W125 15:56:33.453427322 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 7]  using GPU 7 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank11]:[W125 15:56:33.500727537 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 11]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank9]:[W125 15:56:33.500728317 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 9]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank3]:[W125 15:56:33.453715378 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 3]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank8]:[W125 15:56:33.500740173 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 8]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank2]:[W125 15:56:33.453824914 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 2]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank12]:[W125 15:56:33.500753663 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 12]  using GPU 4 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank1]:[W125 15:56:33.453912984 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank13]:[W125 15:56:33.501013273 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 13]  using GPU 5 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank0]:[W125 15:56:33.453951796 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank14]:[W125 15:56:33.501180590 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 14]  using GPU 6 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank15]:[W125 15:56:33.501259341 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 15]  using GPU 7 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.27s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.27s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.27s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.26s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.26s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.26s/it]LoadiLoading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.97s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.95s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.97s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.95s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.96s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.97s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.26s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.27s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.01s/it]
+
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.01s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.02s/it]
+ng checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.96s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.96s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.32s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.32s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.32s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.32s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.42s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.41s/it]
+
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.42s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.32s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.42s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.32s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.32s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.41s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.42s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.42s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.33s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.43s/it]
+[W125 15:57:49.088705409 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+[W125 15:57:49.156114072 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())

@@ -1,0 +1,27 @@
+REPO_ROOT=/mnt/sharedfs/nebius-demoday-test
+RUNS_ROOT=/mnt/sharedfs/nebius-demoday-test/results/training
+HF_HOME=/mnt/sharedfs/nebius-demoday-test/.cache/huggingface
+worker0
+/mnt/sharedfs/nebius-demoday-test
+/mnt/sharedfs/nebius-demoday-test/.venv/bin/python
+Python 3.12.3
+{'loss': 1.2753, 'grad_norm': 50.5, 'learning_rate': 2e-05, 'epoch': 0.0}
+{'loss': 1.8605, 'grad_norm': 69.0, 'learning_rate': 1.8e-05, 'epoch': 0.0}
+{'loss': 1.1892, 'grad_norm': 29.75, 'learning_rate': 1.6000000000000003e-05, 'epoch': 0.01}
+{'loss': 1.2061, 'grad_norm': 28.125, 'learning_rate': 1.4e-05, 'epoch': 0.01}
+{'loss': 1.0492, 'grad_norm': 30.25, 'learning_rate': 1.2e-05, 'epoch': 0.01}
+{'loss': 1.1469, 'grad_norm': 52.25, 'learning_rate': 1e-05, 'epoch': 0.01}
+{'loss': 1.3285, 'grad_norm': 50.0, 'learning_rate': 8.000000000000001e-06, 'epoch': 0.01}
+{'loss': 1.2227, 'grad_norm': 33.75, 'learning_rate': 6e-06, 'epoch': 0.02}
+{'loss': 1.1622, 'grad_norm': 29.875, 'learning_rate': 4.000000000000001e-06, 'epoch': 0.02}
+{'loss': 0.9635, 'grad_norm': 34.75, 'learning_rate': 2.0000000000000003e-06, 'epoch': 0.02}
+{'train_runtime': 139.2298, 'train_samples_per_second': 0.287, 'train_steps_per_second': 0.072, 'train_loss': 1.2404037475585938, 'epoch': 0.02}
+METRICS: {
+  "wall_time_s": 139.34335827827454,
+  "approx_tokens": 5120,
+  "approx_tokens_per_s": 36.74376779247092,
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "torch": "2.5.1+cu121",
+  "model": "mistralai/Mistral-7B-v0.1",
+  "dataset": "yahma/alpaca-cleaned"
+}
