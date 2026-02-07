@@ -13,11 +13,12 @@ hf_cache/
 torch_cache/
 
 # Slurm & logs
-slurm-logs/
+#slurm-logs/
 *.out
 *.err
 
 # Checkpoints / weights
+**/checkpoint_*/
 **/checkpoints/
 **/runs/
 **/adapters/
